@@ -16,7 +16,10 @@ namespace BleakwindBuffet.Data.Sides
 		// Properties
 		public double Price { get; set; } = 0.93;
 		public uint Calories { get; set; } = 41;
-		public List<string> SpecialInstructions { get; set; }
+		public List<string> SpecialInstructions
+		{
+			get => new List<string>();
+		}
 
 		private Size _size = Size.Small;
 

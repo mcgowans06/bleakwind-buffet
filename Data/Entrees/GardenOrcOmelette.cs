@@ -15,7 +15,11 @@ namespace BleakwindBuffet.Data.Entrees
 		// Default Properties
 		public double Price { get; private set; } = 4.57;
 		public uint Calories { get; private set; } = 404;
-		public List<String> SpecialInstructions { get; set; }
+		private List<string> specialInstructions = new List<string>();
+		public List<string> SpecialInstructions
+		{
+			get => new List<string>(specialInstructions);
+		}
 
 		// Private Backing Variables for Ingredients
 		private bool _broccoli = true;
@@ -35,7 +39,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_broccoli = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold broccoli");
+					specialInstructions.Add("Hold broccoli");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold broccoli");
 				}
 			}
 		}
@@ -50,7 +58,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_mushrooms = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold mushrooms");
+					specialInstructions.Add("Hold mushrooms");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold mushrooms");
 				}
 			}
 		}
@@ -65,7 +77,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_tomato = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold tomato");
+					specialInstructions.Add("Hold tomato");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold tomato");
 				}
 			}
 		}
@@ -80,7 +96,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_cheddar = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold cheddar");
+					specialInstructions.Add("Hold cheddar");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold cheddar");
 				}
 			}
 		}

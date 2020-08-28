@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Entrees
 		// Default Properties
 		public double Price { get; private set; } = 6.44;
 		public uint Calories { get; private set; } = 982;
-		public List<String> SpecialInstructions { get; private set; }
+		public List<String> SpecialInstructions = new List<string>();
 
 		// ToString Override
 		public override string ToString()

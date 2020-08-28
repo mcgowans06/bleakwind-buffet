@@ -15,7 +15,11 @@ namespace BleakwindBuffet.Data.Entrees
 		// Default Properties
 		public double Price { get; private set; } = 7.23;
 		public uint Calories { get; private set; } = 784;
-		public List<String> SpecialInstructions { get; set; }
+		private List<string> specialInstructions = new List<string>();
+		public List<string> SpecialInstructions
+		{
+			get => new List<string>(specialInstructions);
+		}
 
 		// Private Backing Variables for Ingredients
 		private bool _sirloin = true;
@@ -34,7 +38,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_sirloin = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold sirloin");
+					specialInstructions.Add("Hold sirloin");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold sirloin");
 				}
 			}
 		}
@@ -49,7 +57,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_onion = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold onions");
+					specialInstructions.Add("Hold onions");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold onions");
 				}
 			}
 		}
@@ -64,7 +76,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_roll = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold roll");
+					specialInstructions.Add("Hold roll");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold roll");
 				}
 			}
 		}

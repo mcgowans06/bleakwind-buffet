@@ -15,7 +15,11 @@ namespace BleakwindBuffet.Data.Entrees
 		// Default Properties
 		public double Price { get; private set; } = 5.62;
 		public uint Calories { get; private set; } = 602;
-		public List<String> SpecialInstructions { get; set; }
+		private List<string> specialInstructions = new List<string>();
+		public List<string> SpecialInstructions
+		{
+			get => new List<string>(specialInstructions);
+		}
 
 		// Private Backing Variables for Ingredients
 		private bool _sausageLink = true;
@@ -35,7 +39,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_sausageLink = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold sausage");
+					specialInstructions.Add("Hold sausage");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold sausage");
 				}
 			}
 		}
@@ -50,7 +58,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_egg = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold eggs");
+					specialInstructions.Add("Hold eggs");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold eggs");
 				}
 			}
 		}
@@ -65,7 +77,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_hashbrowns = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold hash browns");
+					specialInstructions.Add("Hold hash browns");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold hash browns");
 				}
 			}
 		}
@@ -80,7 +96,11 @@ namespace BleakwindBuffet.Data.Entrees
 				_pancake = value;
 				if (value == false)
 				{
-					SpecialInstructions.Add("Hold pancakes");
+					specialInstructions.Add("Hold pancakes");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold pancakes");
 				}
 			}
 		}

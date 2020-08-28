@@ -16,7 +16,11 @@ namespace BleakwindBuffet.Data.Drinks
 		// Properties
 		public double Price { get; set; } = 1.42;
 		public uint Calories { get; set; } = 117;
-		public List<string> SpecialInstructions { get; set; }
+		private List<string> specialInstructions = new List<string>();
+		public List<string> SpecialInstructions
+		{
+			get => new List<string>(specialInstructions);
+		}
 		public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
 
 		// Private Backing Variables
@@ -58,7 +62,11 @@ namespace BleakwindBuffet.Data.Drinks
 				_ice = value;
 				if(value == false)
 				{
-					SpecialInstructions.Add("Hold ice");
+					specialInstructions.Add("Hold ice");
+				}
+				else
+				{
+					specialInstructions.Remove("Hold ice");
 				}
 			}
 		}
