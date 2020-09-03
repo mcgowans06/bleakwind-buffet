@@ -11,7 +11,7 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Sides
 {
-	class DragonbornWaffleFries
+	public class DragonbornWaffleFries
 	{
 		// Properties
 		public double Price { get; set; } = 0.42;
