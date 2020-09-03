@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-	class PhillyPoacher
+	public class PhillyPoacher
 	{
 		// Default Properties
 		public double Price { get; private set; } = 7.23;

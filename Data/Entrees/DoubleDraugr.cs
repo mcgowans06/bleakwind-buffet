@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-	class DoubleDraugr
+	public class DoubleDraugr
 	{
 		// Default Properties
 		public double Price { get; private set; } = 7.32;

@@ -11,7 +11,7 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Sides
 {
-	class VokunSalad
+	public class VokunSalad
 	{
 		// Properties
 		public double Price { get; set; } = 0.93;

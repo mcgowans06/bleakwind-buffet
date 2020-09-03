@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-	class GardenOrcOmelette
+	public class GardenOrcOmelette
 	{
 		// Default Properties
 		public double Price { get; private set; } = 4.57;

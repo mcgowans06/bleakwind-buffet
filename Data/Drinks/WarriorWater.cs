@@ -11,7 +11,7 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-	class WarriorWater
+	public class WarriorWater
 	{
 		// Properties
 		public double Price { get; set; } = 0.00;
