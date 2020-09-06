@@ -11,20 +11,40 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+	/// <summary>
+	/// Public class for representing an Aretino Apple Juice
+	/// </summary>
 	public class AretinoAppleJuice
 	{
-		// Properties
+		/* Properties */
+		/// <summary>
+		/// The price of this Aretino Apple Juice
+		/// </summary>
 		public double Price { get; set; } = 0.62;
+		/// <summary>
+		/// The calories of this Aretino Apple Juice
+		/// </summary>
 		public uint Calories { get; set; } = 44;
+		
+		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions of the Aretino Apple Juice
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
-			get => new List<string>(specialInstructions);
+			get
+			{
+				return(new List<string>(specialInstructions));
+			}
 		}
 
 		// Private Backing Variables
 		private Size _size = Size.Small;
 		private Boolean _ice = false;
+		/// <summary>
+		/// Stores the size of the drink and sets the price and calories accordingly
+		/// </summary>
 		public Size Size
 		{
 			get
@@ -48,8 +68,12 @@ namespace BleakwindBuffet.Data.Drinks
 					Price = 1.01;
 					Calories = 132;
 				}
+				_size = value;
 			}
 		}
+		/// <summary>
+		/// If this drink has ice
+		/// </summary>
 		public Boolean Ice
 		{
 			get
@@ -65,12 +89,16 @@ namespace BleakwindBuffet.Data.Drinks
 				}
 				else
 				{
-					specialInstructions.Remove("Add ice");
+					if(specialInstructions.Contains("Add ice")) specialInstructions.Remove("Add ice");
 				}
 			}
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this drink
+		/// </summary>
+		/// <returns>A string describing this drink</returns>
 		public override string ToString()
 		{
 			return ($"{Size} Aretino Apple Juice");

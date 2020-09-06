@@ -10,12 +10,25 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+	/// <summary>
+	/// Public class representing the Garden Orc Omelette
+	/// </summary>
 	public class GardenOrcOmelette
 	{
 		// Default Properties
+		/// <summary>
+		/// Prive of this entree
+		/// </summary>
 		public double Price { get; private set; } = 4.57;
+		/// <summary>
+		/// Calories of this entree
+		/// </summary>
 		public uint Calories { get; private set; } = 404;
+		// Private backing variable of the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions for this entree
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
@@ -28,6 +41,9 @@ namespace BleakwindBuffet.Data.Entrees
 		private bool _cheddar = true;
 
 		// Ingredient Properties
+		/// <summary>
+		/// If this entree has broccoli
+		/// </summary>
 		public bool Broccoli
 		{
 			get
@@ -47,6 +63,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has mushrooms
+		/// </summary>
 		public bool Mushrooms
 		{
 			get
@@ -66,6 +85,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has tomatoes
+		/// </summary>
 		public bool Tomato
 		{
 			get
@@ -85,6 +107,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has cheddar
+		/// </summary>
 		public bool Cheddar
 		{
 			get
@@ -106,6 +131,10 @@ namespace BleakwindBuffet.Data.Entrees
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this entree
+		/// </summary>
+		/// <returns>A string describing this entree</returns>
 		public override string ToString()
 		{
 			return ("Garden Orc Omelette");

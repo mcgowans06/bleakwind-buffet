@@ -11,21 +11,40 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
+	/// <summary>
+	/// Public class representing the Sailor Soda
+	/// </summary>
 	public class SailorSoda
 	{
 		// Properties
+		/// <summary>
+		/// The price of this drink. Set to small initially
+		/// </summary>
 		public double Price { get; set; } = 1.42;
+		/// <summary>
+		/// The calories of this drink. Set to small initially
+		/// </summary>
 		public uint Calories { get; set; } = 117;
+		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions for this drink
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}
+		/// <summary>
+		/// The flavor of this drink
+		/// </summary>
 		public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
 
 		// Private Backing Variables
 		private Size _size = Size.Small;
 		private Boolean _ice = true;
+		/// <summary>
+		/// The size of this drink. Sets the price and calories accordingly
+		/// </summary>
 		public Size Size
 		{
 			get
@@ -49,8 +68,12 @@ namespace BleakwindBuffet.Data.Drinks
 					Price = 2.07;
 					Calories = 205;
 				}
+				_size = value;
 			}
 		}
+		/// <summary>
+		/// If this drink has ice
+		/// </summary>
 		public Boolean Ice
 		{
 			get
@@ -72,6 +95,10 @@ namespace BleakwindBuffet.Data.Drinks
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this drink
+		/// </summary>
+		/// <returns>A string describing this drink</returns>
 		public override string ToString()
 		{
 			return ($"{Size} {Flavor} Sailor Soda");

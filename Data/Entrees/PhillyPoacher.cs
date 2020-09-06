@@ -10,12 +10,25 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+	/// <summary>
+	/// Public class representing the Philly Poacher
+	/// </summary>
 	public class PhillyPoacher
 	{
 		// Default Properties
+		/// <summary>
+		/// Price of this entree
+		/// </summary>
 		public double Price { get; private set; } = 7.23;
+		/// <summary>
+		/// Calories of this entree
+		/// </summary>
 		public uint Calories { get; private set; } = 784;
+		// Private backing variable of the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions for this entree
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
@@ -27,6 +40,9 @@ namespace BleakwindBuffet.Data.Entrees
 		private bool _roll = true;
 
 		// Ingredient Properties
+		/// <summary>
+		/// If this entree has sirloin
+		/// </summary>
 		public bool Sirloin
 		{
 			get
@@ -46,6 +62,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has onions
+		/// </summary>
 		public bool Onion
 		{
 			get
@@ -65,6 +84,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// if this entree has rolls
+		/// </summary>
 		public bool Roll
 		{
 			get
@@ -86,6 +108,10 @@ namespace BleakwindBuffet.Data.Entrees
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this entree
+		/// </summary>
+		/// <returns>A string describing this entree</returns>
 		public override string ToString()
 		{
 			return ("Philly Poacher");

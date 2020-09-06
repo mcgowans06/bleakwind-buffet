@@ -1,7 +1,7 @@
 ﻿/*
 * Author: Samuel McGowan
-* Class name: MarkathMilk.cs
-* Purpose: To hold information for the Markath Milk
+* Class name: MarkarthMilk.cs
+* Purpose: To hold information for the Markarth Milk
 */
 
 using System;
@@ -11,12 +11,25 @@ using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-	public class MarkathMilk
+	/// <summary>
+	/// Public class representing the Markarth Milk
+	/// </summary>
+	public class MarkarthMilk
 	{
 		// Properties
+		/// <summary>
+		/// The price of this drink. Set to small by default
+		/// </summary>
 		public double Price { get; set; } = 1.05;
+		/// <summary>
+		/// The calories of this drink. Set to small by default
+		/// </summary>
 		public uint Calories { get; set; } = 56;
+		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions for this drink
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
@@ -25,6 +38,9 @@ namespace BleakwindBuffet.Data.Drinks
 		// Private Backing Variables
 		private Size _size = Size.Small;
 		private Boolean _ice = false;
+		/// <summary>
+		/// The size of this drink. Sets the price and calories accordingly
+		/// </summary>
 		public Size Size
 		{
 			get
@@ -48,8 +64,12 @@ namespace BleakwindBuffet.Data.Drinks
 					Price = 1.22;
 					Calories = 93;
 				}
+				_size = value;
 			}
 		}
+		/// <summary>
+		/// If this drink has ice
+		/// </summary>
 		public Boolean Ice
 		{
 			get
@@ -71,9 +91,13 @@ namespace BleakwindBuffet.Data.Drinks
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this drink
+		/// </summary>
+		/// <returns>A string describing this drink</returns>
 		public override string ToString()
 		{
-			return ($"{Size} Markath Milk");
+			return ($"{Size} Markarth Milk");
 		}
 	}
 }

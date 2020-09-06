@@ -10,12 +10,25 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Entrees
 {
+	/// <summary>
+	/// Public class representing the Thalmor Triple
+	/// </summary>
 	public class ThalmorTriple
 	{
 		// Default Properties
+		/// <summary>
+		/// Price of this entree
+		/// </summary>
 		public double Price { get; private set; } = 8.32;
+		/// <summary>
+		/// Calories of this entree
+		/// </summary>
 		public uint Calories { get; private set; } = 943;
+		// The private backing variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
+		/// <summary>
+		/// Stores the special instructions for this entree
+		/// </summary>
 		public List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
@@ -34,6 +47,9 @@ namespace BleakwindBuffet.Data.Entrees
 		private bool _egg = true;
 
 		// Ingredient Properties
+		/// <summary>
+		/// If this entree has a bun
+		/// </summary>
 		public bool Bun
 		{
 			get
@@ -53,6 +69,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has ketchup
+		/// </summary>
 		public bool Ketchup
 		{
 			get
@@ -72,6 +91,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has mustard
+		/// </summary>
 		public bool Mustard
 		{
 			get
@@ -91,6 +113,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has pickles
+		/// </summary>
 		public bool Pickle
 		{
 			get
@@ -110,6 +135,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has cheese
+		/// </summary>
 		public bool Cheese
 		{
 			get
@@ -129,6 +157,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has tomatoes
+		/// </summary>
 		public bool Tomato
 		{
 			get
@@ -148,6 +179,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has lettuce
+		/// </summary>
 		public bool Lettuce
 		{
 			get
@@ -167,6 +201,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has mayo
+		/// </summary>
 		public bool Mayo
 		{
 			get
@@ -186,6 +223,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has bacon
+		/// </summary>
 		public bool Bacon
 		{
 			get
@@ -205,6 +245,9 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 			}
 		}
+		/// <summary>
+		/// If this entree has an egg
+		/// </summary>
 		public bool Egg
 		{
 			get
@@ -226,6 +269,10 @@ namespace BleakwindBuffet.Data.Entrees
 		}
 
 		// ToString Override
+		/// <summary>
+		/// Returns a description of this entree
+		/// </summary>
+		/// <returns>A string describing this entree</returns>
 		public override string ToString()
 		{
 			return ("Thalmor Triple");
