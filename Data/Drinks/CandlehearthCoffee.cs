@@ -14,23 +14,47 @@ namespace BleakwindBuffet.Data.Drinks
 	/// <summary>
 	/// Public class that represents a CandleHearthCoffee
 	/// </summary>
-	public class CandlehearthCoffee
+	public class CandlehearthCoffee : Drink
 	{
 		// Properties
 		/// <summary>
-		/// The price of this drink, set to the value of a small by default
+		/// The price of this drink
 		/// </summary>
-		public double Price { get; set; } = 0.75;
+		public override double Price
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (.75);
+					case Size.Medium: return (1.25);
+					case Size.Large: return (1.75);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		/// <summary>
 		/// The calories of this drink, set to the value of a small by default
 		/// </summary>
-		public uint Calories { get; set; } = 7;
+		public override uint Calories
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (7);
+					case Size.Medium: return (10);
+					case Size.Large: return (20);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		//Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this drink
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}
@@ -40,39 +64,9 @@ namespace BleakwindBuffet.Data.Drinks
 		public Boolean Decaf { get; set; } = false;
 
 		// Private Backing Variables
-		private Size _size = Size.Small;
 		private Boolean _ice = false;
 		private Boolean _roomForCream = false;
 
-		/// <summary>
-		/// The size of the drink. Sets the price and calories accordingly
-		/// </summary>
-		public Size Size
-		{
-			get
-			{
-				return (_size);
-			}
-			set
-			{
-				if (value.Equals(Size.Small))
-				{
-					Price = 0.75;
-					Calories = 7;
-				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 1.25;
-					Calories = 10;
-				}
-				else
-				{
-					Price = 1.75;
-					Calories = 20;
-				}
-				_size = value;
-			}
-		}
 		/// <summary>
 		/// If this drink has ice
 		/// </summary>

@@ -14,23 +14,47 @@ namespace BleakwindBuffet.Data.Drinks
 	/// <summary>
 	/// Public class representing the Sailor Soda
 	/// </summary>
-	public class SailorSoda
+	public class SailorSoda : Drink
 	{
 		// Properties
 		/// <summary>
 		/// The price of this drink. Set to small initially
 		/// </summary>
-		public double Price { get; set; } = 1.42;
+		public override double Price
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (1.42);
+					case Size.Medium: return (1.74);
+					case Size.Large: return (2.07);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		/// <summary>
 		/// The calories of this drink. Set to small initially
 		/// </summary>
-		public uint Calories { get; set; } = 117;
+		public override uint Calories
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (117);
+					case Size.Medium: return (153);
+					case Size.Large: return (205);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this drink
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}
@@ -40,37 +64,7 @@ namespace BleakwindBuffet.Data.Drinks
 		public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
 
 		// Private Backing Variables
-		private Size _size = Size.Small;
 		private Boolean _ice = true;
-		/// <summary>
-		/// The size of this drink. Sets the price and calories accordingly
-		/// </summary>
-		public Size Size
-		{
-			get
-			{
-				return (_size);
-			}
-			set
-			{
-				if (value.Equals(Size.Small))
-				{
-					Price = 1.42;
-					Calories = 117;
-				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 1.74;
-					Calories = 153;
-				}
-				else
-				{
-					Price = 2.07;
-					Calories = 205;
-				}
-				_size = value;
-			}
-		}
 		/// <summary>
 		/// If this drink has ice
 		/// </summary>

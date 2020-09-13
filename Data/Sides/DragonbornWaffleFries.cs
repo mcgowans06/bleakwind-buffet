@@ -14,55 +14,47 @@ namespace BleakwindBuffet.Data.Sides
 	/// <summary>
 	/// Public class representing the Dragonborn Waffle Fries
 	/// </summary>
-	public class DragonbornWaffleFries
+	public class DragonbornWaffleFries : Side
 	{
 		// Properties
 		/// <summary>
 		/// Price of this side. Initially set to small
 		/// </summary>
-		public double Price { get; set; } = 0.42;
-		/// <summary>
-		/// Calories of this side. Initially set to small
-		/// </summary>
-		public uint Calories { get; set; } = 77;
-		/// <summary>
-		/// Stores the special instructions for this side
-		/// </summary>
-		public List<string> SpecialInstructions
-		{
-			get => new List<string>();
-		}
-
-		private Size _size = Size.Small;
-		
-		/// <summary>
-		/// Stores the size of this entree. Sets the price and calories accordingly
-		/// </summary>
-		public Size Size
+		public override double Price
 		{
 			get
 			{
-				return (_size);
+				switch (Size)
+				{
+					case Size.Small: return (.42);
+					case Size.Medium: return (.76);
+					case Size.Large: return (.96);
+					default: throw new NotImplementedException("Should never be reached");
+				}
 			}
-			set
+		}
+		/// <summary>
+		/// Calories of this side. Initially set to small
+		/// </summary>
+		public override uint Calories
+		{
+			get
 			{
-				if (value.Equals(Size.Small))
+				switch (Size)
 				{
-					Price = 0.42;
-					Calories = 77;
+					case Size.Small: return (77);
+					case Size.Medium: return (89);
+					case Size.Large: return (100);
+					default: throw new NotImplementedException("Should never be reached");
 				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 0.76;
-					Calories = 89;
-				}
-				else
-				{
-					Price = 0.96;
-					Calories = 100;
-				}
-				_size = value;
 			}
+		}
+		/// <summary>
+		/// Stores the special instructions for this side
+		/// </summary>
+		public override List<string> SpecialInstructions
+		{
+			get => new List<string>();
 		}
 
 		// ToString Override

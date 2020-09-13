@@ -13,23 +13,23 @@ namespace BleakwindBuffet.Data.Entrees
 	/// <summary>
 	/// Public class representing the Garden Orc Omelette
 	/// </summary>
-	public class GardenOrcOmelette
+	public class GardenOrcOmelette : Entree
 	{
 		// Default Properties
 		/// <summary>
 		/// Prive of this entree
 		/// </summary>
-		public double Price { get; private set; } = 4.57;
+		public override double Price { get; } = 4.57;
 		/// <summary>
 		/// Calories of this entree
 		/// </summary>
-		public uint Calories { get; private set; } = 404;
+		public override uint Calories { get; } = 404;
 		// Private backing variable of the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this entree
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}

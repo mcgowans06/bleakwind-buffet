@@ -14,59 +14,53 @@ namespace BleakwindBuffet.Data.Drinks
 	/// <summary>
 	/// Public class representing the Markarth Milk
 	/// </summary>
-	public class MarkarthMilk
+	public class MarkarthMilk : Drink
 	{
 		// Properties
 		/// <summary>
 		/// The price of this drink. Set to small by default
 		/// </summary>
-		public double Price { get; set; } = 1.05;
+		public override double Price
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (1.05);
+					case Size.Medium: return (1.11);
+					case Size.Large: return (1.22);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		/// <summary>
 		/// The calories of this drink. Set to small by default
 		/// </summary>
-		public uint Calories { get; set; } = 56;
+		public override uint Calories
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (56);
+					case Size.Medium: return (72);
+					case Size.Large: return (93);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this drink
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}
 
 		// Private Backing Variables
-		private Size _size = Size.Small;
 		private Boolean _ice = false;
-		/// <summary>
-		/// The size of this drink. Sets the price and calories accordingly
-		/// </summary>
-		public Size Size
-		{
-			get
-			{
-				return (_size);
-			}
-			set
-			{
-				if (value.Equals(Size.Small))
-				{
-					Price = 1.05;
-					Calories = 56;
-				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 1.11;
-					Calories = 72;
-				}
-				else
-				{
-					Price = 1.22;
-					Calories = 93;
-				}
-				_size = value;
-			}
-		}
 		/// <summary>
 		/// If this drink has ice
 		/// </summary>

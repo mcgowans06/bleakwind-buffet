@@ -13,23 +13,23 @@ namespace BleakwindBuffet.Data.Entrees
 	/// <summary>
 	/// Public class representing the Smokehouse Skeleton
 	/// </summary>
-	public class SmokehouseSkeleton
+	public class SmokehouseSkeleton : Entree
 	{
 		// Default Properties
 		/// <summary>
 		/// Price of this entree
 		/// </summary>
-		public double Price { get; private set; } = 5.62;
+		public override double Price { get; } = 5.62;
 		/// <summary>
 		/// Calories of this entree
 		/// </summary>
-		public uint Calories { get; private set; } = 602;
+		public override uint Calories { get; } = 602;
 		// Private backing variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this entree
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}

@@ -13,23 +13,23 @@ namespace BleakwindBuffet.Data.Entrees
 	/// <summary>
 	/// Public class representing the Thalmor Triple
 	/// </summary>
-	public class ThalmorTriple
+	public class ThalmorTriple : Entree
 	{
 		// Default Properties
 		/// <summary>
 		/// Price of this entree
 		/// </summary>
-		public double Price { get; private set; } = 8.32;
+		public override double Price { get; } = 8.32;
 		/// <summary>
 		/// Calories of this entree
 		/// </summary>
-		public uint Calories { get; private set; } = 943;
+		public override uint Calories { get; } = 943;
 		// The private backing variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this entree
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}

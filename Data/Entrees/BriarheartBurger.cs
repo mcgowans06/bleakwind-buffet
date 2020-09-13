@@ -13,24 +13,24 @@ namespace BleakwindBuffet.Data.Entrees
 	/// <summary>
 	/// Public class representing the Briarheart Burger
 	/// </summary>
-	public class BriarheartBurger
+	public class BriarheartBurger : Entree
 	{
 		// Default Properties
 		/// <summary>
 		/// The price of this entree
 		/// </summary>
-		public double Price { get; private set; } = 6.32;
+		public override double Price { get; } = 6.32;
 		/// <summary>
 		/// The calories of this entree
 		/// </summary>
-		public uint Calories { get; private set; } = 743;
+		public override uint Calories { get; } = 743;
 
 		// The private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions for this entree
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get => new List<string>(specialInstructions);
 		}

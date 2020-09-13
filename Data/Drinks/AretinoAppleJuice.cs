@@ -14,24 +14,48 @@ namespace BleakwindBuffet.Data.Drinks
 	/// <summary>
 	/// Public class for representing an Aretino Apple Juice
 	/// </summary>
-	public class AretinoAppleJuice
+	public class AretinoAppleJuice : Drink 
 	{
 		/* Properties */
 		/// <summary>
 		/// The price of this Aretino Apple Juice
 		/// </summary>
-		public double Price { get; set; } = 0.62;
+		public override double Price
+		{
+			get 
+			{
+				switch (Size)
+				{
+					case Size.Small: return (.62);
+					case Size.Medium: return (.87);
+					case Size.Large: return (1.01);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		/// <summary>
 		/// The calories of this Aretino Apple Juice
 		/// </summary>
-		public uint Calories { get; set; } = 44;
+		public override uint Calories
+		{
+			get
+			{
+				switch (Size)
+				{
+					case Size.Small: return (44);
+					case Size.Medium: return (88);
+					case Size.Large: return (132);
+					default: throw new NotImplementedException("Should never be reached");
+				}
+			}
+		}
 		
 		// Private backer variable for the SpecialInstructions property
 		private List<string> specialInstructions = new List<string>();
 		/// <summary>
 		/// Stores the special instructions of the Aretino Apple Juice
 		/// </summary>
-		public List<string> SpecialInstructions
+		public override List<string> SpecialInstructions
 		{
 			get
 			{
@@ -40,37 +64,7 @@ namespace BleakwindBuffet.Data.Drinks
 		}
 
 		// Private Backing Variables
-		private Size _size = Size.Small;
 		private Boolean _ice = false;
-		/// <summary>
-		/// Stores the size of the drink and sets the price and calories accordingly
-		/// </summary>
-		public Size Size
-		{
-			get
-			{
-				return (_size);
-			}
-			set
-			{
-				if (value.Equals(Size.Small))
-				{
-					Price = 0.62;
-					Calories = 44;
-				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 0.87;
-					Calories = 88;
-				}
-				else
-				{
-					Price = 1.01;
-					Calories = 132;
-				}
-				_size = value;
-			}
-		}
 		/// <summary>
 		/// If this drink has ice
 		/// </summary>

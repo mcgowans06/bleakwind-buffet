@@ -14,55 +14,47 @@ namespace BleakwindBuffet.Data.Sides
 	/// <summary>
 	/// Public class representing the Fried Miraak
 	/// </summary>
-	public class FriedMiraak
+	public class FriedMiraak : Side
 	{
 		// Properties
 		/// <summary>
 		/// Price of this side. Set initially to small
 		/// </summary>
-		public double Price { get; set; } = 1.78;
-		/// <summary>
-		/// Calories of this side. Set initially to small
-		/// </summary>
-		public uint Calories { get; set; } = 151;
-		/// <summary>
-		/// Stores the special instructions for this side
-		/// </summary>
-		public List<string> SpecialInstructions
-		{
-			get => new List<string>();
-		}
-
-		private Size _size = Size.Small;
-		
-		/// <summary>
-		/// The size of this side. Sets the price and calories accordingly
-		/// </summary>
-		public Size Size
+		public override double Price 
 		{
 			get
 			{
-				return (_size);
+				switch (Size)
+				{
+					case Size.Small: return (1.78);
+					case Size.Medium: return (2.01);
+					case Size.Large: return (2.88);
+					default: throw new NotImplementedException("Should never be reached");
+				}
 			}
-			set
+		}
+		/// <summary>
+		/// Calories of this side. Set initially to small
+		/// </summary>
+		public override uint Calories
+		{
+			get
 			{
-				if (value.Equals(Size.Small))
+				switch (Size)
 				{
-					Price = 1.78;
-					Calories = 151;
+					case Size.Small: return (151);
+					case Size.Medium: return (236);
+					case Size.Large: return (306);
+					default: throw new NotImplementedException("Should never be reached");
 				}
-				else if (value.Equals(Size.Medium))
-				{
-					Price = 2.01;
-					Calories = 236;
-				}
-				else
-				{
-					Price = 2.88;
-					Calories = 306;
-				}
-				_size = value;
 			}
+		}
+		/// <summary>
+		/// Stores the special instructions for this side
+		/// </summary>
+		public override List<string> SpecialInstructions
+		{
+			get => new List<string>();
 		}
 
 		// ToString Override
