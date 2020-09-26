@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="PointOfSale.OrderScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="orderNum" Grid.Row="0" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+            Order #1
+        </TextBlock>
+        <ListView Name="orderList" Grid.Row="1"/>
+        <StackPanel Grid.Row="2">
+            <TextBlock Name="subtotal" Grid.Row="2" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+                Subtotal: $0.00
+            </TextBlock>
+            <TextBlock Name="tax" Grid.Row="3" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+                Tax: $0.00
+            </TextBlock>
+            <TextBlock Name="total" Grid.Row="4" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+                Total: $0.00
+            </TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

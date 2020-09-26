@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="PointOfSale.EntreeMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Divide the grid into 7 rows for the 6 entree and back buttons-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock containing "Entrees" set to the first row of the grid-->
+        <TextBlock Grid.Row="0" TextAlignment="Center" FontWeight="Bold" FontSize="40" TextDecorations="Underline">
+            Entrees
+        </TextBlock>
+        <!-- Create buttons for each entree and a back button-->
+        <Button Name="briarheartButton" Grid.Row="1">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Briarheart Burger
+            </TextBlock>
+        </Button>
+        <Button Name="draugrButton" Grid.Row="2">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Double Draugr
+            </TextBlock>
+        </Button>
+        <Button Name="thalmorButton" Grid.Row="3">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Thalmor Triple
+            </TextBlock>
+        </Button>
+        <Button Name="smokehouseButton" Grid.Row="4">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Smokehouse Skeleton
+            </TextBlock>
+        </Button>
+        <Button Name="orcButton" Grid.Row="5">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Garden Orc Omelette
+            </TextBlock>
+        </Button>
+        <Button Name="tboneButton" Grid.Row="6">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Thugs T-Bone
+            </TextBlock>
+        </Button>
+        <Button Name="backButton" Grid.Row="7">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Back
+            </TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

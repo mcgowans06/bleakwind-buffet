@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="PointOfSale.SideMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Divide the grid into 5 rows for the 4 side and 1 back buttons-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock containing "Sides" set to the first row of the grid-->
+        <TextBlock Grid.Row="0" TextAlignment="Center" FontWeight="Bold" FontSize="40" TextDecorations="Underline">
+            Sides
+        </TextBlock>
+
+        <!-- Create buttons for each side and create a back button-->
+        <Button Name="saladButton" Grid.Row="1">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Vokun Salad
+            </TextBlock>
+        </Button>
+        <Button Name="miraakButton" Grid.Row="2">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Fried Miraak
+            </TextBlock>
+        </Button>
+        <Button Name="gritsButton" Grid.Row="3">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Mad Otar Grits
+            </TextBlock>
+        </Button>
+        <Button Name="friesButton" Grid.Row="4">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Dragonborn Waffle Fries
+            </TextBlock>
+        </Button>
+        <Button Name="backButton" Grid.Row="5">
+            <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
+                Back
+            </TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="PointOfSale.SpecialInstructions.SailorSodaInstructions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale.SpecialInstructions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Divide the grid into 6 rows-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Name of the drink-->
+        <TextBlock Grid.ColumnSpan="2" TextAlignment="Center" FontSize="30" FontWeight="Bold" Margin="15,0,0,0">
+                Sailor Soda Customization
+        </TextBlock>
+
+        <!-- "Size:" TextBlock-->
+        <TextBlock Grid.Row="1" TextAlignment="left" FontSize="30" FontWeight="Bold">
+                Size:
+        </TextBlock>
+
+        <!-- The 3 size radio buttons-->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <RadioButton GroupName="Size" Name="smallRadio" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold">
+                Small
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="mediumRadio" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold">
+                Medium
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="largeRadio" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold">
+                Large
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+        </Grid>
+
+        <!-- "Flavor:" TextBlock-->
+        <TextBlock Grid.Row="1" Grid.Column="1" TextAlignment="left" FontSize="30" FontWeight="Bold">
+                Flavor:
+        </TextBlock>
+        
+        <!-- The 6 flavor radio buttons-->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <RadioButton GroupName="Size" Name="blackberryRadio" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold">
+                Blackberry
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="cherryRadio" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold">
+                Cherry
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="grapefruitRadio" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold">
+                Grapefruit
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="lemonRadio" Grid.Row="3" VerticalAlignment="Center" FontWeight="Bold">
+                Lemon
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="peachRadio" Grid.Row="4" VerticalAlignment="Center" FontWeight="Bold">
+                Peach
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+            <RadioButton GroupName="Size" Name="watermelonRadio" Grid.Row="5" VerticalAlignment="Center" FontWeight="Bold">
+                Watermelon
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+        </Grid>
+
+        <!-- Done button for when done customizing-->
+        <Button Name="doneButton" Grid.Row="3" Grid.ColumnSpan="2">
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold">
+                Done
+            </TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

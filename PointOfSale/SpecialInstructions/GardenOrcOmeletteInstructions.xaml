@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="PointOfSale.SpecialInstructions.GardenOrcOmeletteInstructions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale.SpecialInstructions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Split the grid into 6 rows-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Create a textblock that says the name of the entree on the first row-->
+        <TextBlock Grid.Row="0" TextAlignment="Center" FontSize="30" FontWeight="Bold">
+                Garden Orc Omelette Customization
+        </TextBlock>
+
+        <!-- Check boxes for special instructions-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+            <CheckBox Name="broccoliBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Broccoli
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" >
+            <CheckBox Name="mushroomsBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Mushrooms
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" >
+            <CheckBox Name="tomatoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Tomato
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" >
+            <CheckBox Name="cheddarBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Cheddar
+            </TextBlock>
+        </StackPanel>
+
+        <!-- Done button for when done customizing-->
+        <Button Name="doneButton" Grid.Row="5">
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold">
+                Done
+            </TextBlock>
+        </Button>
+
+    </Grid>
+</UserControl>

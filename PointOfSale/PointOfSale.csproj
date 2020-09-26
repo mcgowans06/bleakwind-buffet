@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pics\ButtonDrinks.jpg" />
+    <None Remove="Pics\ButtonEntree.jpg" />
+    <None Remove="Pics\ButtonSides.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pics\ButtonDrinks.jpg" />
+    <Resource Include="Pics\ButtonEntree.jpg" />
+    <Resource Include="Pics\ButtonSides.jpg" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="PointOfSale.SpecialInstructions.ThalmorTripleInstructions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale.SpecialInstructions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Split the grid into 12 rows-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Create a textblock that says the name of the entree on the first row-->
+        <TextBlock Grid.Row="0" TextAlignment="Center" FontSize="30" FontWeight="Bold">
+                Thalmor Triple Customization
+        </TextBlock>
+
+        <!-- Check boxes for special instructions-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+            <CheckBox Name="bunBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Bun
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" >
+            <CheckBox Name="ketchupBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Ketchup
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" >
+            <CheckBox Name="mustardBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Mustard
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" >
+            <CheckBox Name="pickleBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Pickle
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" >
+            <CheckBox Name="cheeseBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Cheese
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" >
+            <CheckBox Name="tomatoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Tomato
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" >
+            <CheckBox Name="lettuceBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Lettuce
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" >
+            <CheckBox Name="mayoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Mayo
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="9" >
+            <CheckBox Name="baconBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Bacon
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="10" >
+            <CheckBox Name="eggBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+                Egg
+            </TextBlock>
+        </StackPanel>
+
+        <!-- Done button for when done customizing-->
+        <Button Name="doneButton" Grid.Row="11">
+            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold">
+                Done
+            </TextBlock>
+        </Button>
+
+    </Grid>
+</UserControl>
