@@ -17,8 +17,10 @@
     <None Remove="Pics\Draugr Double.jpg" />
     <None Remove="Pics\Fried Miraak.jpg" />
     <None Remove="Pics\Garden Orc Omelette.jpg" />
+    <None Remove="Pics\Mad Otar Grits.jpg" />
     <None Remove="Pics\Markarth Milk.jpg" />
     <None Remove="Pics\Sailor Soda.jpg" />
+    <None Remove="Pics\Smokehouse Skeleton.png" />
     <None Remove="Pics\Thalmor Triple.jpg" />
     <None Remove="Pics\Thugs TBone.jpg" />
     <None Remove="Pics\Vokun Salad.jpg" />
@@ -40,8 +42,10 @@
     <Resource Include="Pics\Draugr Double.jpg" />
     <Resource Include="Pics\Fried Miraak.jpg" />
     <Resource Include="Pics\Garden Orc Omelette.jpg" />
+    <Resource Include="Pics\Mad Otar Grits.jpg" />
     <Resource Include="Pics\Markarth Milk.jpg" />
     <Resource Include="Pics\Sailor Soda.jpg" />
+    <Resource Include="Pics\Smokehouse Skeleton.png" />
     <Resource Include="Pics\Thalmor Triple.jpg" />
     <Resource Include="Pics\Thugs TBone.jpg" />
     <Resource Include="Pics\Vokun Salad.jpg" />

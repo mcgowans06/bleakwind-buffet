@@ -56,6 +56,6 @@
         <Image Source="Pics/Vokun Salad.jpg" Grid.Row="1" Grid.Column="1"/>
         <Image Source="Pics/Fried Miraak.jpg" Grid.Row="2" Grid.Column="1"/>
         <Image Source="Pics/Mad Otar Grits.jpg" Grid.Row="3" Grid.Column="1"/>
-        <Image Source="Pics/Dragonborn Waffle Fries.jpg" Grid.Row="4" Grid.Column="1"/>
+        <Image Source="Pics/Dragonborn Waffle Fries.png" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </UserControl>
