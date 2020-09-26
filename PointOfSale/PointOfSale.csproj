@@ -7,9 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pics\Aretino Apple Juice.jpg" />
+    <None Remove="Pics\Briarheart Burger.jpg" />
     <None Remove="Pics\ButtonDrinks.jpg" />
     <None Remove="Pics\ButtonEntree.jpg" />
     <None Remove="Pics\ButtonSides.jpg" />
+    <None Remove="Pics\Candleheart Coffee.jpg" />
+    <None Remove="Pics\Dragonborn Waffle Fries.jpg" />
+    <None Remove="Pics\Draugr Double.jpg" />
+    <None Remove="Pics\Fried Miraak.jpg" />
+    <None Remove="Pics\Garden Orc Omelette.jpg" />
+    <None Remove="Pics\Markarth Milk.jpg" />
+    <None Remove="Pics\Sailor Soda.jpg" />
+    <None Remove="Pics\Thalmor Triple.jpg" />
+    <None Remove="Pics\Thugs TBone.jpg" />
+    <None Remove="Pics\Vokun Salad.jpg" />
+    <None Remove="Pics\Warrior Water.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,9 +30,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Pics\Aretino Apple Juice.jpg" />
+    <Resource Include="Pics\Briarheart Burger.jpg" />
     <Resource Include="Pics\ButtonDrinks.jpg" />
     <Resource Include="Pics\ButtonEntree.jpg" />
     <Resource Include="Pics\ButtonSides.jpg" />
+    <Resource Include="Pics\Candleheart Coffee.jpg" />
+    <Resource Include="Pics\Dragonborn Waffle Fries.jpg" />
+    <Resource Include="Pics\Draugr Double.jpg" />
+    <Resource Include="Pics\Fried Miraak.jpg" />
+    <Resource Include="Pics\Garden Orc Omelette.jpg" />
+    <Resource Include="Pics\Markarth Milk.jpg" />
+    <Resource Include="Pics\Sailor Soda.jpg" />
+    <Resource Include="Pics\Thalmor Triple.jpg" />
+    <Resource Include="Pics\Thugs TBone.jpg" />
+    <Resource Include="Pics\Vokun Salad.jpg" />
+    <Resource Include="Pics\Warrior Water.png" />
   </ItemGroup>
 
 </Project>

@@ -16,37 +16,46 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <!-- TextBlock containing "Sides" set to the first row of the grid-->
-        <TextBlock Grid.Row="0" TextAlignment="Center" FontWeight="Bold" FontSize="40" TextDecorations="Underline">
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" FontWeight="Bold" FontSize="40" TextDecorations="Underline">
             Sides
         </TextBlock>
 
         <!-- Create buttons for each side and create a back button-->
-        <Button Name="saladButton" Grid.Row="1">
+        <Button Name="saladButton" Grid.Row="1" Grid.ColumnSpan="2"> 
             <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
                 Vokun Salad
             </TextBlock>
         </Button>
-        <Button Name="miraakButton" Grid.Row="2">
+        <Button Name="miraakButton" Grid.Row="2" Grid.ColumnSpan="2">
             <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
                 Fried Miraak
             </TextBlock>
         </Button>
-        <Button Name="gritsButton" Grid.Row="3">
+        <Button Name="gritsButton" Grid.Row="3" Grid.ColumnSpan="2">
             <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
                 Mad Otar Grits
             </TextBlock>
         </Button>
-        <Button Name="friesButton" Grid.Row="4">
+        <Button Name="friesButton" Grid.Row="4" Grid.ColumnSpan="2">
             <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
                 Dragonborn Waffle Fries
             </TextBlock>
         </Button>
-        <Button Name="backButton" Grid.Row="5">
+        <Button Name="backButton" Grid.Row="5" Grid.ColumnSpan="2">
             <TextBlock TextAlignment="Center" FontSize="40" FontWeight="Bold">
                 Back
             </TextBlock>
         </Button>
+
+        <Image Source="Pics/Vokun Salad.jpg" Grid.Row="1" Grid.Column="1"/>
+        <Image Source="Pics/Fried Miraak.jpg" Grid.Row="2" Grid.Column="1"/>
+        <Image Source="Pics/Mad Otar Grits.jpg" Grid.Row="3" Grid.Column="1"/>
+        <Image Source="Pics/Dragonborn Waffle Fries.jpg" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </UserControl>
