@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* Author: Samuel McGowan
+* Class name: MainWindow.xaml.cs
+* Purpose: To initialize the MainWindow component
+* Last Modified: 10/2/20
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

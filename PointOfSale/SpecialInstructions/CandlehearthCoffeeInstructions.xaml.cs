@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* Author: Samuel McGowan
+* Class name: CandlehearthCoffeeInstructions.xaml.cs
+* Purpose: To initialize the CandlehearthCoffeeInstructions component
+* Last Modified: 10/2/20
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleakwindBuffet.Data.Drinks;
 
 namespace PointOfSale.SpecialInstructions
 {
@@ -21,6 +29,7 @@ namespace PointOfSale.SpecialInstructions
 		public CandlehearthCoffeeInstructions()
 		{
 			InitializeComponent();
+			this.DataContext = new CandlehearthCoffee();
 		}
 	}
 }

@@ -23,7 +23,7 @@
 
         <!-- Check boxes for special instructions-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <CheckBox Name="sirloinBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="sirloinBox" IsChecked="{Binding Path=Sirloin}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -33,7 +33,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" >
-            <CheckBox Name="onionBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="onionBox" IsChecked="{Binding Path=Onion}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -43,7 +43,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" >
-            <CheckBox Name="rollBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="rollBox" IsChecked="{Binding Path=Roll}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>

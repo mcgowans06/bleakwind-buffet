@@ -2,19 +2,23 @@
 * Author: Samuel McGowan
 * Class name: SmokehouseSkeleton.cs
 * Purpose: To hold information for the Smokehouse Skeleton
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
 	/// <summary>
 	/// Public class representing the Smokehouse Skeleton
 	/// </summary>
-	public class SmokehouseSkeleton : Entree
+	public class SmokehouseSkeleton : Entree, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		// Default Properties
 		/// <summary>
 		/// Price of this entree
@@ -52,15 +56,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_sausageLink = value;
-				if (value == false)
+				if(value != _sausageLink)
 				{
-					specialInstructions.Add("Hold sausage");
+					_sausageLink = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold sausage");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold sausage");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold sausage");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
 			}
 		}
 		/// <summary>
@@ -74,15 +82,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_egg = value;
-				if (value == false)
+				if(value != _egg)
 				{
-					specialInstructions.Add("Hold eggs");
+					_egg = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold eggs");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold eggs");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold eggs");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
 			}
 		}
 		/// <summary>
@@ -96,15 +108,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_hashbrowns = value;
-				if (value == false)
+				if(value != _hashbrowns)
 				{
-					specialInstructions.Add("Hold hash browns");
+					_hashbrowns = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold hash browns");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold hash browns");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold hash browns");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
 			}
 		}
 		/// <summary>
@@ -118,15 +134,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_pancake = value;
-				if (value == false)
+				if(value != _pancake)
 				{
-					specialInstructions.Add("Hold pancakes");
+					_pancake = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold pancakes");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold pancakes");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold pancakes");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
 			}
 		}
 

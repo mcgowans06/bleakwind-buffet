@@ -2,12 +2,14 @@
 * Author: Samuel McGowan
 * Class name: SailorSoda.cs
 * Purpose: To hold information for the Sailor Soda
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
@@ -16,6 +18,8 @@ namespace BleakwindBuffet.Data.Drinks
 	/// </summary>
 	public class SailorSoda : Drink
 	{
+		public override event PropertyChangedEventHandler PropertyChanged;
+
 		// Properties
 		/// <summary>
 		/// The price of this drink. Set to small initially
@@ -58,10 +62,22 @@ namespace BleakwindBuffet.Data.Drinks
 		{
 			get => new List<string>(specialInstructions);
 		}
+		private SodaFlavor _flavor = SodaFlavor.Cherry;
 		/// <summary>
 		/// The flavor of this drink
 		/// </summary>
-		public SodaFlavor Flavor { get; set; } = SodaFlavor.Cherry;
+		public SodaFlavor Flavor
+		{
+			get { return (_flavor); }
+			set
+			{
+				if(value != _flavor)
+				{
+					_flavor = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
+				}
+			}
+		} 
 
 		// Private Backing Variables
 		private Boolean _ice = true;
@@ -76,15 +92,39 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_ice = value;
-				if(value == false)
+				if(value != _ice)
 				{
-					specialInstructions.Add("Hold ice");
+					_ice = value;
+					if(value == false)
+					{
+						specialInstructions.Add("Hold ice");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold ice");
+					}
 				}
-				else
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+			}
+		}
+
+		private Size _size = Size.Small;
+		/// <summary>
+		/// The size of the drink
+		/// </summary>
+		public override Size Size
+		{
+			get { return (_size); }
+			set
+			{
+				if (value != _size)
 				{
-					specialInstructions.Remove("Hold ice");
+					_size = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 				}
+
 			}
 		}
 

@@ -2,19 +2,23 @@
 * Author: Samuel McGowan
 * Class name: DoubleDraugr.cs
 * Purpose: To hold information for the Double Draugr
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
 	/// <summary>
 	/// Public class representing the Double Draugr
 	/// </summary>
-	public class DoubleDraugr : Entree
+	public class DoubleDraugr : Entree, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		// Default Properties
 		/// <summary>
 		/// The price of this entree
@@ -56,19 +60,24 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_bun = value;
-				if (value == false)
+				if (value != _bun)
 				{
-					specialInstructions.Add("Hold bun");
+					_bun = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold bun");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold bun");
+					}
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
 				}
-				else
-				{
-					specialInstructions.Remove("Hold bun");
-				}
+
 			}
 		}
 		/// <summary>
-		/// If this entree has ketchup
+		/// If this entree has ketchup	
 		/// </summary>
 		public bool Ketchup
 		{
@@ -78,15 +87,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_ketchup = value;
-				if (value == false)
+				if (value != _ketchup)
 				{
-					specialInstructions.Add("Hold ketchup");
+					_ketchup = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold ketchup");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold ketchup");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold ketchup");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
 			}
 		}
 		/// <summary>
@@ -100,15 +113,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_mustard = value;
-				if (value == false)
+				if (value != _mustard)
 				{
-					specialInstructions.Add("Hold mustard");
+					_mustard = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold mustard");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold mustard");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold mustard");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
 			}
 		}
 		/// <summary>
@@ -122,15 +139,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_pickle = value;
-				if (value == false)
+				if (value != _pickle)
 				{
-					specialInstructions.Add("Hold pickle");
+					_pickle = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold pickle");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold pickle");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold pickle");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
 			}
 		}
 		/// <summary>
@@ -144,17 +165,22 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_cheese = value;
-				if (value == false)
+				if (value != _cheese)
 				{
-					specialInstructions.Add("Hold cheese");
+					_cheese = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold cheese");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold cheese");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold cheese");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
 			}
 		}
+
 		/// <summary>
 		/// If this entree has tomatoes
 		/// </summary>
@@ -166,15 +192,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_tomato = value;
-				if (value == false)
+				if(value != _tomato)
 				{
-					specialInstructions.Add("Hold tomato");
+					_tomato = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold tomato");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold tomato");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold tomato");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
 			}
 		}
 		/// <summary>
@@ -188,15 +218,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_lettuce = value;
-				if (value == false)
+				if(value != _lettuce)
 				{
-					specialInstructions.Add("Hold lettuce");
+					_lettuce = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold lettuce");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold lettuce");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold lettuce");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lettuce"));
 			}
 		}
 		/// <summary>
@@ -210,15 +244,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_mayo = value;
-				if (value == false)
+				if(value != _mayo)
 				{
-					specialInstructions.Add("Hold mayo");
+					_mayo = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold mayo");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold mayo");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold mayo");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mayo"));
 			}
 		}
 

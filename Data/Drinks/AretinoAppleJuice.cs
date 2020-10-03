@@ -2,20 +2,27 @@
 * Author: Samuel McGowan
 * Class name: AretinoAppleJuice.cs
 * Purpose: To hold information for the Aretino Apple Juice
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
 	/// <summary>
 	/// Public class for representing an Aretino Apple Juice
 	/// </summary>
-	public class AretinoAppleJuice : Drink 
+	public class AretinoAppleJuice : Drink
 	{
+		/// <summary>
+		/// Event handler that handles whenever a property is changed
+		/// </summary>
+		public override event PropertyChangedEventHandler PropertyChanged;
+
 		/* Properties */
 		/// <summary>
 		/// The price of this Aretino Apple Juice
@@ -76,15 +83,39 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_ice = value;
-				if (value == true)
+				if(value != _ice)
 				{
-					specialInstructions.Add("Add ice");
+					_ice = value;
+					if (value == true)
+					{
+						specialInstructions.Add("Add ice");
+					}
+					else
+					{
+						if(specialInstructions.Contains("Add ice")) specialInstructions.Remove("Add ice");
+					}
 				}
-				else
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+			}
+		}
+
+		private Size _size = Size.Small;
+		/// <summary>
+		/// The size of the drink
+		/// </summary>
+		public override Size Size
+		{
+			get { return (_size); }
+			set
+			{
+				if (value != _size)
 				{
-					if(specialInstructions.Contains("Add ice")) specialInstructions.Remove("Add ice");
+					_size = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 				}
+
 			}
 		}
 

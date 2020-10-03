@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
@@ -16,6 +17,8 @@ namespace BleakwindBuffet.Data.Drinks
 	/// </summary>
 	public class WarriorWater : Drink
 	{
+		public override event PropertyChangedEventHandler PropertyChanged;
+
 		// Properties
 		/// <summary>
 		/// The price of this drink. Initially set to small
@@ -49,15 +52,19 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_ice = value;
-				if (value == false)
+				if(value != _ice)
 				{
-					specialInstructions.Add("Hold ice");
+					_ice = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold ice");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold ice");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold ice");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
 			}
 		}
 		/// <summary>
@@ -71,15 +78,39 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_lemon = value;
-				if (value == true)
+				if(value != _lemon)
 				{
-					specialInstructions.Add("Add lemon");
+					_lemon = value;
+					if (value == true)
+					{
+						specialInstructions.Add("Add lemon");
+					}
+					else
+					{
+						specialInstructions.Remove("Add lemon");
+					}
 				}
-				else
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lemon"));
+			}
+		}
+
+		private Size _size = Size.Small;
+		/// <summary>
+		/// The size of the drink
+		/// </summary>
+		public override Size Size
+		{
+			get { return (_size); }
+			set
+			{
+				if (value != _size)
 				{
-					specialInstructions.Remove("Add lemon");
+					_size = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 				}
+
 			}
 		}
 

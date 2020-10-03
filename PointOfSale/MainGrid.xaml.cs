@@ -2,6 +2,7 @@
 * Author: Samuel McGowan
 * Class name: MainGrid.xaml.cs
 * Purpose: To hold information for the partial MainGrid partial class and to assign event handlers to all buttons
+* Last Modified: 10/2/20
 */
 
 using System;
@@ -35,10 +36,16 @@ namespace PointOfSale
 		ThalmorTripleInstructions thalmorTriple = new ThalmorTripleInstructions();
 		SmokehouseSkeletonInstructions smokehouseSkeleton = new SmokehouseSkeletonInstructions();
 		GardenOrcOmeletteInstructions gardenOrcOmelette = new GardenOrcOmeletteInstructions();
+		PhillyPoacherInstructions phillyPoacher = new PhillyPoacherInstructions();
 		CandlehearthCoffeeInstructions candlehearthCoffee = new CandlehearthCoffeeInstructions();
 		SailorSodaInstructions sailorSoda = new SailorSodaInstructions();
-		DrinkSpecialInstructions drinkInstructions = new DrinkSpecialInstructions();
-		SideSpecialInstructions sideInstructions = new SideSpecialInstructions();
+		DrinkSpecialInstructions milkInstructions = new DrinkSpecialInstructions("milk");
+		DrinkSpecialInstructions applejuiceInstructions = new DrinkSpecialInstructions("applejuice");
+		DrinkSpecialInstructions waterInstructions = new DrinkSpecialInstructions("water");
+		SideSpecialInstructions dragonbornInstructions = new SideSpecialInstructions("dragonborn");
+		SideSpecialInstructions miraakInstructions = new SideSpecialInstructions("miraak");
+		SideSpecialInstructions saladInstructions = new SideSpecialInstructions("salad");
+		SideSpecialInstructions gritsInstructions = new SideSpecialInstructions("grits");
 
 		public MainGrid()
 		{
@@ -61,10 +68,16 @@ namespace PointOfSale
 			thalmorTriple.doneButton.Click += DoneButtonClick;
 			smokehouseSkeleton.doneButton.Click += DoneButtonClick;
 			gardenOrcOmelette.doneButton.Click += DoneButtonClick;
+			phillyPoacher.doneButton.Click += DoneButtonClick;
 			candlehearthCoffee.doneButton.Click += DoneButtonClick;
 			sailorSoda.doneButton.Click += DoneButtonClick;
-			drinkInstructions.doneButton.Click += DoneButtonClick;
-			sideInstructions.doneButton.Click += DoneButtonClick;
+			milkInstructions.doneButton.Click += DoneButtonClick;
+			applejuiceInstructions.doneButton.Click += DoneButtonClick;
+			waterInstructions.doneButton.Click += DoneButtonClick;
+			dragonbornInstructions.doneButton.Click += DoneButtonClick;
+			miraakInstructions.doneButton.Click += DoneButtonClick;
+			saladInstructions.doneButton.Click += DoneButtonClick;
+			gritsInstructions.doneButton.Click += DoneButtonClick;
 
 			// Entree menu event handlers to go to special instructions
 			entreeMenu.briarheartButton.Click += GoToBriarheartInstructions;
@@ -72,19 +85,20 @@ namespace PointOfSale
 			entreeMenu.thalmorButton.Click += GoToThalmorInstructions;
 			entreeMenu.smokehouseButton.Click += GoToSmokehouseInstructions;
 			entreeMenu.orcButton.Click += GoToGardenOrcInstructions;
+			entreeMenu.phillyButton.Click += GoToPhillyPoacherInstructions;
 
 			// Drink menu event handlers to go to the special instructions
 			drinkMenu.sodaButton.Click += GoToSailorSodaInstructions;
 			drinkMenu.coffeeButton.Click += GoToCandlehearthInstructions;
-			drinkMenu.milkButton.Click += GoToDrinkInstructions;
-			drinkMenu.applejuiceButton.Click += GoToDrinkInstructions;
-			drinkMenu.waterButton.Click += GoToDrinkInstructions;
+			drinkMenu.milkButton.Click += GoToMarkarthMilkInstructions;
+			drinkMenu.applejuiceButton.Click += GoToAretinoAppleJuiceInstructions;
+			drinkMenu.waterButton.Click += GoToWarriorWaterInstructions;
 
 			// Side menu event handlers to go to the special instructions
-			sideMenu.saladButton.Click += GoToSideInstructions;
-			sideMenu.miraakButton.Click += GoToSideInstructions;
-			sideMenu.gritsButton.Click += GoToSideInstructions;
-			sideMenu.friesButton.Click += GoToSideInstructions;
+			sideMenu.saladButton.Click += GoToVokunSaladInstructions;
+			sideMenu.miraakButton.Click += GoToFriedMiraakInstructions;
+			sideMenu.gritsButton.Click += GoToMadOtarGritsInstructions;
+			sideMenu.friesButton.Click += GoToDragonbornWaffleFriesInstructions;
 
 		}
 
@@ -151,14 +165,44 @@ namespace PointOfSale
 		}
 		
 		/// <summary>
-		/// Event handler that Goes to the side special instructions
+		/// Event handler that Goes to the Dragonborn Waffle Fries instructions
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void GoToSideInstructions(object sender, RoutedEventArgs e)
+		void GoToDragonbornWaffleFriesInstructions(object sender, RoutedEventArgs e)
 		{
 			mainGrid.Children.RemoveAt(1);
-			mainGrid.Children.Add(sideInstructions);
+			mainGrid.Children.Add(dragonbornInstructions);
+		}
+		/// <summary>
+		/// Event handler that Goes to the Fried Miraak special instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToFriedMiraakInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(miraakInstructions);
+		}
+		/// <summary>
+		/// Event handler that Goes to the Vokun Salad special instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToVokunSaladInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(saladInstructions);
+		}
+		/// <summary>
+		/// Event handler that Goes to the Mad Otar Grits special instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToMadOtarGritsInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(gritsInstructions);
 		}
 
 		/// <summary>
@@ -217,6 +261,17 @@ namespace PointOfSale
 		}
 
 		/// <summary>
+		/// Event handler that goes to the philly poacher special instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToPhillyPoacherInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(phillyPoacher);
+		}
+
+		/// <summary>
 		/// Event handler that goes to the sailor soda special instructions
 		/// </summary>
 		/// <param name="sender"></param>
@@ -239,14 +294,36 @@ namespace PointOfSale
 		}
 
 		/// <summary>
-		/// Event handler that goes to the drink instructions
+		/// Event handler that goes to the Markarth Milk instructions
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		void GoToDrinkInstructions(object sender, RoutedEventArgs e)
+		void GoToMarkarthMilkInstructions(object sender, RoutedEventArgs e)
 		{
 			mainGrid.Children.RemoveAt(1);
-			mainGrid.Children.Add(drinkInstructions);
+			mainGrid.Children.Add(milkInstructions);
+		}
+
+		/// <summary>
+		/// Event handler that goes to the Aretino Apple Juice instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToAretinoAppleJuiceInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(applejuiceInstructions);
+		}
+
+		/// <summary>
+		/// Event handler that goes to the Warrior Water instructions
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToWarriorWaterInstructions(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(waterInstructions);
 		}
 
 	}

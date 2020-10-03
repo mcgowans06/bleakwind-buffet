@@ -11,22 +11,38 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Name="orderNum" Grid.Row="0" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </Grid.Resources>
+        <TextBlock Name="orderNum" Grid.ColumnSpan="2" Grid.Row="0" TextAlignment="Center" FontSize="20" FontWeight="Bold">
             Order #1
         </TextBlock>
-        <ListView Name="orderList" Grid.Row="1"/>
-        <StackPanel Grid.Row="2">
-            <TextBlock Name="subtotal" Grid.Row="2" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+        <ListView Name="orderList" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <StackPanel Grid.Row="2"  Grid.ColumnSpan="2">
+            <TextBlock Name="subtotal" Grid.Row="2" TextAlignment="Center" FontSize="15" FontWeight="Bold">
                 Subtotal: $0.00
             </TextBlock>
-            <TextBlock Name="tax" Grid.Row="3" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+            <TextBlock Name="tax" Grid.Row="3" TextAlignment="Center" FontSize="15" FontWeight="Bold">
                 Tax: $0.00
             </TextBlock>
-            <TextBlock Name="total" Grid.Row="4" TextAlignment="Center" FontSize="12" FontWeight="Bold">
+            <TextBlock Name="total" Grid.Row="4" TextAlignment="Center" FontSize="15" FontWeight="Bold">
                 Total: $0.00
             </TextBlock>
         </StackPanel>
-        
+        <Button Name="completeButton" Grid.Row="3" Grid.Column="0">
+            Complete
+        </Button>
+        <Button Name="cancelButton" Grid.Row="3" Grid.Column="1">
+            Cancel
+        </Button>
     </Grid>
 </UserControl>

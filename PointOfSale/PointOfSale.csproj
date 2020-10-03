@@ -14,11 +14,13 @@
     <None Remove="Pics\ButtonSides.jpg" />
     <None Remove="Pics\Candleheart Coffee.jpg" />
     <None Remove="Pics\Dragonborn Waffle Fries.jpg" />
+    <None Remove="Pics\Dragonborn Waffle Fries.png" />
     <None Remove="Pics\Draugr Double.jpg" />
     <None Remove="Pics\Fried Miraak.jpg" />
     <None Remove="Pics\Garden Orc Omelette.jpg" />
     <None Remove="Pics\Mad Otar Grits.jpg" />
     <None Remove="Pics\Markarth Milk.jpg" />
+    <None Remove="Pics\Philly Poacher.jpg" />
     <None Remove="Pics\Sailor Soda.jpg" />
     <None Remove="Pics\Smokehouse Skeleton.png" />
     <None Remove="Pics\Thalmor Triple.jpg" />
@@ -39,11 +41,13 @@
     <Resource Include="Pics\ButtonSides.jpg" />
     <Resource Include="Pics\Candleheart Coffee.jpg" />
     <Resource Include="Pics\Dragonborn Waffle Fries.jpg" />
+    <Resource Include="Pics\Dragonborn Waffle Fries.png" />
     <Resource Include="Pics\Draugr Double.jpg" />
     <Resource Include="Pics\Fried Miraak.jpg" />
     <Resource Include="Pics\Garden Orc Omelette.jpg" />
     <Resource Include="Pics\Mad Otar Grits.jpg" />
     <Resource Include="Pics\Markarth Milk.jpg" />
+    <Resource Include="Pics\Philly Poacher.jpg" />
     <Resource Include="Pics\Sailor Soda.jpg" />
     <Resource Include="Pics\Smokehouse Skeleton.png" />
     <Resource Include="Pics\Thalmor Triple.jpg" />

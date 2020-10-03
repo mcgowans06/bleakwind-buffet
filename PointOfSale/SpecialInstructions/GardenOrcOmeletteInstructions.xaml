@@ -24,7 +24,7 @@
 
         <!-- Check boxes for special instructions-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <CheckBox Name="broccoliBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="broccoliBox" IsChecked="{Binding Path=Broccoli}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -34,7 +34,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" >
-            <CheckBox Name="mushroomsBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="mushroomsBox" IsChecked="{Binding Path=Mushrooms}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -44,7 +44,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" >
-            <CheckBox Name="tomatoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="tomatoBox" IsChecked="{Binding Path=Tomato}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -54,7 +54,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="4" >
-            <CheckBox Name="cheddarBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="cheddarBox" IsChecked="{Binding Path=Cheddar}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>

@@ -2,12 +2,14 @@
 * Author: Samuel McGowan
 * Class name: CandlehearthCoffee.cs
 * Purpose: To hold information for the Candlehearth Coffee
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
@@ -16,6 +18,8 @@ namespace BleakwindBuffet.Data.Drinks
 	/// </summary>
 	public class CandlehearthCoffee : Drink
 	{
+		public override event PropertyChangedEventHandler PropertyChanged;
+
 		// Properties
 		/// <summary>
 		/// The price of this drink
@@ -78,15 +82,19 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_ice = value;
-				if (value == true)
+				if(value != _ice)
 				{
-					specialInstructions.Add("Add ice");
+					_ice = value;
+					if (value == true)
+					{
+						specialInstructions.Add("Add ice");
+					}
+					else
+					{
+						specialInstructions.Remove("Add ice");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Add ice");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
 			}
 		}
 		/// <summary>
@@ -100,11 +108,35 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_roomForCream = value;
-				if (value == true)
+				if(value != _roomForCream)
 				{
-					specialInstructions.Add("Add cream");
+					_roomForCream = value;
+					if (value == true)
+					{
+						specialInstructions.Add("Add cream");
+					}
 				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+			}
+		}
+
+		private Size _size = Size.Small;
+		/// <summary>
+		/// The size of the drink
+		/// </summary>
+		public override Size Size
+		{
+			get { return (_size); }
+			set
+			{
+				if (value != _size)
+				{
+					_size = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+				}
+
 			}
 		}
 

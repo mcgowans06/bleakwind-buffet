@@ -4,8 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.SpecialInstructions"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:enumData="clr-namespace:BleakwindBuffet.Data.Enums;assembly=Data"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="sizes" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enumData:Size"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <RadioButton Content="{TemplateBinding ContentPresenter.Content}" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <RadioButton.LayoutTransform>
+                                <ScaleTransform ScaleX="4" ScaleY="4"/>
+                            </RadioButton.LayoutTransform>
+                        </RadioButton>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <!-- Divide the grid into 6 rows-->
         <Grid.RowDefinitions>
@@ -29,44 +51,46 @@
                 Size:
         </TextBlock>
 
-        <!-- The 3 size radio buttons-->
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <RadioButton GroupName="Size" Name="smallRadio" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold">
-                Small
-                <RadioButton.LayoutTransform>
-                    <ScaleTransform ScaleX="2" ScaleY="2"/>
-                </RadioButton.LayoutTransform>
-            </RadioButton>
-            <RadioButton GroupName="Size" Name="mediumRadio" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold">
-                Medium
-                <RadioButton.LayoutTransform>
-                    <ScaleTransform ScaleX="2" ScaleY="2"/>
-                </RadioButton.LayoutTransform>
-            </RadioButton>
-            <RadioButton GroupName="Size" Name="largeRadio" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold">
-                Large
-                <RadioButton.LayoutTransform>
-                    <ScaleTransform ScaleX="2" ScaleY="2"/>
-                </RadioButton.LayoutTransform>
-            </RadioButton>
-        </Grid>
+        <!-- The ListBox that represents the 3 size radio buttons-->
+        <ListBox Name="sizeListBox" Grid.Row="2" ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}"/>
 
         <!-- The decaf special instruction-->
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-            <CheckBox Name="decafBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
-                <CheckBox.LayoutTransform>
-                    <ScaleTransform ScaleX="2" ScaleY="2"/>
-                </CheckBox.LayoutTransform>
-            </CheckBox>
-            <TextBlock TextAlignment="Center" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
-                Decaf
-            </TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+            <!-- Decaf Checkbox-->
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                <CheckBox Name="decafBox" IsChecked="{Binding Path=Decaf}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="5" ScaleY="5"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <TextBlock TextAlignment="Center" FontSize="50" FontWeight="Bold" VerticalAlignment="Center">
+                    Decaf
+                </TextBlock>
+            </StackPanel>
+            <!-- Ice Checkbox-->
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                <CheckBox Name="iceBox" IsChecked="{Binding Path=Ice}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="5" ScaleY="5"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <TextBlock TextAlignment="Center" FontSize="50" FontWeight="Bold" VerticalAlignment="Center">
+                    Ice
+                </TextBlock>
+            </StackPanel>
+            <!-- RoomForCream Checkbox-->
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                <CheckBox Name="creamBox" IsChecked="{Binding Path=RoomForCream}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="5" ScaleY="5"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <TextBlock TextAlignment="Center" FontSize="50" FontWeight="Bold" VerticalAlignment="Center">
+                    Cream
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
+
 
         <!-- Done button for when done customizing-->
         <Button Name="doneButton" Grid.Row="3" Grid.ColumnSpan="2">

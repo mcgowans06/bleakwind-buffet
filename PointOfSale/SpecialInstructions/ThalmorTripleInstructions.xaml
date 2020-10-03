@@ -30,7 +30,7 @@
 
         <!-- Check boxes for special instructions-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <CheckBox Name="bunBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="bunBox" IsChecked="{Binding Path=Bun}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -40,7 +40,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" >
-            <CheckBox Name="ketchupBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="ketchupBox" IsChecked="{Binding Path=Ketchup}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -50,7 +50,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" >
-            <CheckBox Name="mustardBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="mustardBox" IsChecked="{Binding Path=Mustard}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -60,7 +60,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="4" >
-            <CheckBox Name="pickleBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="pickleBox" IsChecked="{Binding Path=Pickle}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -70,7 +70,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="5" >
-            <CheckBox Name="cheeseBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="cheeseBox" IsChecked="{Binding Path=Cheese}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -80,7 +80,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="6" >
-            <CheckBox Name="tomatoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="tomatoBox" IsChecked="{Binding Path=Tomato}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -90,7 +90,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="7" >
-            <CheckBox Name="lettuceBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="lettuceBox" IsChecked="{Binding Path=Lettuce}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -100,7 +100,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="8" >
-            <CheckBox Name="mayoBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="mayoBox" IsChecked="{Binding Path=Mayo}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -110,7 +110,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="9" >
-            <CheckBox Name="baconBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="baconBox" IsChecked="{Binding Path=Bacon}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -120,7 +120,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="10" >
-            <CheckBox Name="eggBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="eggBox" IsChecked="{Binding Path=Egg}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>

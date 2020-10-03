@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* Author: Samuel McGowan
+* Class name: EntreeMenu.xaml.cs
+* Purpose: To initialize the EntreeMenu component
+* Last Modified: 10/2/20
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

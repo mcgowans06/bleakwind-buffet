@@ -49,6 +49,7 @@ namespace BleakwindBuffet.Data.Sides
 				}
 			}
 		}
+
 		/// <summary>
 		/// Stores the special instructions for this side
 		/// </summary>

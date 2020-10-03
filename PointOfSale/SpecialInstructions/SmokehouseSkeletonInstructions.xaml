@@ -24,7 +24,7 @@
 
         <!-- Check boxes for special instructions-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
-            <CheckBox Name="sausageBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="sausageBox" IsChecked="{Binding Path=SausageLink}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -34,7 +34,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" >
-            <CheckBox Name="eggBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="eggBox" IsChecked="{Binding Path=Egg}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -44,7 +44,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" >
-            <CheckBox Name="hashBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="hashBox" IsChecked="{Binding Path=HashBrowns}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>
@@ -54,7 +54,7 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="4" >
-            <CheckBox Name="pancakeBox" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
+            <CheckBox Name="pancakeBox" IsChecked="{Binding Path=Pancake}" VerticalAlignment="Center" FontSize="30" FontWeight="Bold">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
                 </CheckBox.LayoutTransform>

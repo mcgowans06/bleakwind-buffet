@@ -2,19 +2,23 @@
 * Author: Samuel McGowan
 * Class name: GardenOrcOmelette.cs
 * Purpose: To hold information for the Garden Orc Omelette
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
 	/// <summary>
 	/// Public class representing the Garden Orc Omelette
 	/// </summary>
-	public class GardenOrcOmelette : Entree
+	public class GardenOrcOmelette : Entree, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		// Default Properties
 		/// <summary>
 		/// Prive of this entree
@@ -52,15 +56,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_broccoli = value;
-				if (value == false)
+				if (value != _broccoli)
 				{
-					specialInstructions.Add("Hold broccoli");
+					_broccoli = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold broccoli");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold broccoli");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold broccoli");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
 			}
 		}
 		/// <summary>
@@ -74,15 +82,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_mushrooms = value;
-				if (value == false)
+				if(value != _mushrooms)
 				{
-					specialInstructions.Add("Hold mushrooms");
+					_mushrooms = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold mushrooms");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold mushrooms");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold mushrooms");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
 			}
 		}
 		/// <summary>
@@ -96,15 +108,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_tomato = value;
-				if (value == false)
+				if(value != _tomato)
 				{
-					specialInstructions.Add("Hold tomato");
+					_tomato = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold tomato");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold tomato");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold tomato");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
 			}
 		}
 		/// <summary>
@@ -118,6 +134,8 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
+				if(value != _cheddar)
+				{
 				_cheddar = value;
 				if (value == false)
 				{
@@ -127,6 +145,8 @@ namespace BleakwindBuffet.Data.Entrees
 				{
 					specialInstructions.Remove("Hold cheddar");
 				}
+				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
 			}
 		}
 

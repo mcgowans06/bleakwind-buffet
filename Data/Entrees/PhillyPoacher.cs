@@ -2,19 +2,23 @@
 * Author: Samuel McGowan
 * Class name: PhillyPoacher.cs
 * Purpose: To hold information for the Philly Poacher	
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
 	/// <summary>
 	/// Public class representing the Philly Poacher
 	/// </summary>
-	public class PhillyPoacher : Entree
+	public class PhillyPoacher : Entree, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		// Default Properties
 		/// <summary>
 		/// Price of this entree
@@ -51,15 +55,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_sirloin = value;
-				if (value == false)
+				if(value != _sirloin)
 				{
-					specialInstructions.Add("Hold sirloin");
+					_sirloin = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold sirloin");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold sirloin");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold sirloin");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sirloin"));
 			}
 		}
 		/// <summary>
@@ -73,15 +81,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_onion = value;
-				if (value == false)
+				if(value != _onion)
 				{
-					specialInstructions.Add("Hold onions");
+					_onion = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold onions");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold onions");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold onions");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onion"));
 			}
 		}
 		/// <summary>
@@ -95,15 +107,19 @@ namespace BleakwindBuffet.Data.Entrees
 			}
 			set
 			{
-				_roll = value;
-				if (value == false)
+				if(value != _roll)
 				{
-					specialInstructions.Add("Hold roll");
+					_roll = value;
+					if (value == false)
+					{
+						specialInstructions.Add("Hold roll");
+					}
+					else
+					{
+						specialInstructions.Remove("Hold roll");
+					}
 				}
-				else
-				{
-					specialInstructions.Remove("Hold roll");
-				}
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Roll"));
 			}
 		}
 

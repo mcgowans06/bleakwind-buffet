@@ -2,12 +2,14 @@
 * Author: Samuel McGowan
 * Class name: MarkarthMilk.cs
 * Purpose: To hold information for the Markarth Milk
+* Last Modified: 10/2/20
 */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
@@ -16,6 +18,8 @@ namespace BleakwindBuffet.Data.Drinks
 	/// </summary>
 	public class MarkarthMilk : Drink
 	{
+		public override event PropertyChangedEventHandler PropertyChanged;
+
 		// Properties
 		/// <summary>
 		/// The price of this drink. Set to small by default
@@ -72,15 +76,39 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 			set
 			{
-				_ice = value;
-				if (value == true)
+				if(value != _ice)
 				{
-					specialInstructions.Add("Add ice");
+					_ice = value;
+					if (value == true)
+					{
+						specialInstructions.Add("Add ice");
+					}
+					else
+					{
+						specialInstructions.Remove("Add ice");
+					}
 				}
-				else
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+			}
+		}
+
+		private Size _size = Size.Small;
+		/// <summary>
+		/// The size of the drink
+		/// </summary>
+		public override Size Size
+		{
+			get { return (_size); }
+			set
+			{
+				if (value != _size)
 				{
-					specialInstructions.Remove("Add ice");
+					_size = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 				}
+
 			}
 		}
 

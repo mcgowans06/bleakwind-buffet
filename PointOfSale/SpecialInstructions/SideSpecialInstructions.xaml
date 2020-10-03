@@ -4,16 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.SpecialInstructions"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:enumData="clr-namespace:BleakwindBuffet.Data.Enums;assembly=Data"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="sizes" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enumData:Size"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <RadioButton Content="{TemplateBinding ContentPresenter.Content}" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <RadioButton.LayoutTransform>
+                                <ScaleTransform ScaleX="4" ScaleY="4"/>
+                            </RadioButton.LayoutTransform>
+                        </RadioButton>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <!-- Divide the grid into 6 rows-->
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
@@ -33,24 +53,7 @@
         </TextBlock>
         
         <!-- The 3 size radio buttons-->
-        <RadioButton GroupName="Size" Name="smallRadio" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold">
-            Small
-            <RadioButton.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-            </RadioButton.LayoutTransform>
-        </RadioButton>
-        <RadioButton GroupName="Size" Name="mediumRadio" Grid.Row="3" VerticalAlignment="Center" FontWeight="Bold">
-            Medium
-            <RadioButton.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-            </RadioButton.LayoutTransform>
-        </RadioButton>
-        <RadioButton GroupName="Size" Name="largeRadio" Grid.Row="4" VerticalAlignment="Center" FontWeight="Bold">
-            Large
-            <RadioButton.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-            </RadioButton.LayoutTransform>
-        </RadioButton>
+        <ListBox Name="sizeListBox" Grid.Row="2" ItemsSource="{Binding Source={StaticResource sizes}}" SelectedItem="{Binding Path=Size}"/>
 
         <!-- Done button for when done customizing-->
         <Button Name="doneButton" Grid.Row="5">
