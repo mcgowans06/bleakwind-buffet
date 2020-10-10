@@ -137,6 +137,28 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             {
                 mog.Size = Size.Large;
             });
+
+            Assert.PropertyChanged(mog, "Name", () =>
+            {
+                mog.Size = Size.Small;
+            });
+
+            Assert.PropertyChanged(mog, "Name", () =>
+            {
+                mog.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mog, "Name", () =>
+            {
+                mog.Size = Size.Large;
+            });
+        }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            MadOtarGrits bb = new MadOtarGrits();
+            Assert.Equal(bb.ToString(), bb.Name);
         }
     }
 }

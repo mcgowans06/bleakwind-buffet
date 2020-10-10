@@ -20,6 +20,17 @@ namespace BleakwindBuffet.Data.Drinks
 	{
 		public override event PropertyChangedEventHandler PropertyChanged;
 
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
+
 		// Properties
 		/// <summary>
 		/// The price of this drink
@@ -62,10 +73,26 @@ namespace BleakwindBuffet.Data.Drinks
 		{
 			get => new List<string>(specialInstructions);
 		}
+
+		private Boolean _decaf = false;
 		/// <summary>
 		/// If this drink is decaf
 		/// </summary>
-		public Boolean Decaf { get; set; } = false;
+		public Boolean Decaf
+		{
+			get
+			{
+				return (_decaf);
+			}
+			set
+			{
+				if(value != _decaf)
+				{
+					_decaf = value;
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
+				}
+			}
+		}
 
 		// Private Backing Variables
 		private Boolean _ice = false;
@@ -95,6 +122,7 @@ namespace BleakwindBuffet.Data.Drinks
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -117,6 +145,7 @@ namespace BleakwindBuffet.Data.Drinks
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RoomForCream"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 
@@ -135,6 +164,7 @@ namespace BleakwindBuffet.Data.Drinks
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
 				}
 
 			}

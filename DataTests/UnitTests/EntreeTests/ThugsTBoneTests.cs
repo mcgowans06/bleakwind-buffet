@@ -55,5 +55,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             ThugsTBone tt = new ThugsTBone();
             Assert.Equal("Thugs T-Bone", tt.ToString());
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            ThugsTBone tt = new ThugsTBone();
+            Assert.Equal(tt.ToString(), tt.Name);
+        }
     }
 }

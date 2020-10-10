@@ -17,7 +17,18 @@ namespace BleakwindBuffet.Data.Entrees
 	/// </summary>
 	public class PhillyPoacher : Entree, INotifyPropertyChanged
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+		public override event PropertyChangedEventHandler PropertyChanged;
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
 
 		// Default Properties
 		/// <summary>
@@ -68,6 +79,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sirloin"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -94,6 +106,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Onion"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -120,6 +133,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Roll"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 

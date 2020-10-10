@@ -18,6 +18,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PointOfSale.SpecialInstructions;
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Sides;
+
 
 namespace PointOfSale
 {
@@ -41,7 +46,7 @@ namespace PointOfSale
 		SailorSodaInstructions sailorSoda = new SailorSodaInstructions();
 		DrinkSpecialInstructions milkInstructions = new DrinkSpecialInstructions("milk");
 		DrinkSpecialInstructions applejuiceInstructions = new DrinkSpecialInstructions("applejuice");
-		DrinkSpecialInstructions waterInstructions = new DrinkSpecialInstructions("water");
+		WarriorWaterInstructions waterInstructions = new WarriorWaterInstructions();
 		SideSpecialInstructions dragonbornInstructions = new SideSpecialInstructions("dragonborn");
 		SideSpecialInstructions miraakInstructions = new SideSpecialInstructions("miraak");
 		SideSpecialInstructions saladInstructions = new SideSpecialInstructions("salad");
@@ -79,6 +84,8 @@ namespace PointOfSale
 			saladInstructions.doneButton.Click += DoneButtonClick;
 			gritsInstructions.doneButton.Click += DoneButtonClick;
 
+			orderScreen.cancelButton.Click += CancelButtonClick;
+
 			// Entree menu event handlers to go to special instructions
 			entreeMenu.briarheartButton.Click += GoToBriarheartInstructions;
 			entreeMenu.draugrButton.Click += GoToDraugrInstructions;
@@ -86,6 +93,7 @@ namespace PointOfSale
 			entreeMenu.smokehouseButton.Click += GoToSmokehouseInstructions;
 			entreeMenu.orcButton.Click += GoToGardenOrcInstructions;
 			entreeMenu.phillyButton.Click += GoToPhillyPoacherInstructions;
+			entreeMenu.tboneButton.Click += AddThugsTBone;
 
 			// Drink menu event handlers to go to the special instructions
 			drinkMenu.sodaButton.Click += GoToSailorSodaInstructions;
@@ -100,6 +108,19 @@ namespace PointOfSale
 			sideMenu.gritsButton.Click += GoToMadOtarGritsInstructions;
 			sideMenu.friesButton.Click += GoToDragonbornWaffleFriesInstructions;
 
+			orderScreen.orderList.SelectionChanged += GoToSelectedScreen;
+
+			this.DataContext = new Order();
+		}
+
+		/// <summary>
+		/// Cancels the current order and creates a new order
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void CancelButtonClick(object sender, RoutedEventArgs e)
+		{
+			this.DataContext = new Order();
 		}
 
 		/// <summary>
@@ -120,6 +141,90 @@ namespace PointOfSale
 		void DoneButtonClick(object sender, RoutedEventArgs e)
 		{
 			GoToMenuSelection();
+		}
+
+		/// <summary>
+		/// Go to the selected screen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void GoToSelectedScreen(object sender, SelectionChangedEventArgs e)
+		{
+			if(((ListView)sender).SelectedItem is BriarheartBurger)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(briarheartBurger);
+			}
+			else if (((ListView)sender).SelectedItem is DoubleDraugr)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(doubleDraugr);
+			}
+			else if (((ListView)sender).SelectedItem is GardenOrcOmelette)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(gardenOrcOmelette);
+			}
+			else if (((ListView)sender).SelectedItem is PhillyPoacher)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(phillyPoacher);
+			}
+			else if (((ListView)sender).SelectedItem is SmokehouseSkeleton)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(smokehouseSkeleton);
+			}
+			else if (((ListView)sender).SelectedItem is ThalmorTriple)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(thalmorTriple);
+			}
+			else if (((ListView)sender).SelectedItem is AretinoAppleJuice)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(applejuiceInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is CandlehearthCoffee)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(candlehearthCoffee);
+			}
+			else if (((ListView)sender).SelectedItem is MarkarthMilk)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(milkInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is SailorSoda)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(sailorSoda);
+			}
+			else if (((ListView)sender).SelectedItem is WarriorWater)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(waterInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is DragonbornWaffleFries)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(dragonbornInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is FriedMiraak)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(miraakInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is MadOtarGrits)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(gritsInstructions);
+			}
+			else if (((ListView)sender).SelectedItem is VokunSalad)
+			{
+				mainGrid.Children.RemoveAt(1);
+				mainGrid.Children.Add(saladInstructions);
+			}
 		}
 
 		/// <summary>
@@ -171,8 +276,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToDragonbornWaffleFriesInstructions(object sender, RoutedEventArgs e)
 		{
+			DragonbornWaffleFries dwf = new DragonbornWaffleFries();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(dragonbornInstructions);
+			dragonbornInstructions.DataContext = dwf;
+			((Order)this.DataContext).Add(dwf);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Fried Miraak special instructions
@@ -181,8 +289,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToFriedMiraakInstructions(object sender, RoutedEventArgs e)
 		{
+			FriedMiraak fm = new FriedMiraak();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(miraakInstructions);
+			miraakInstructions.DataContext = fm;
+			((Order)this.DataContext).Add(fm);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Vokun Salad special instructions
@@ -191,8 +302,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToVokunSaladInstructions(object sender, RoutedEventArgs e)
 		{
+			VokunSalad vs = new VokunSalad();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(saladInstructions);
+			saladInstructions.DataContext = vs;
+			((Order)this.DataContext).Add(vs);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Mad Otar Grits special instructions
@@ -201,8 +315,17 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToMadOtarGritsInstructions(object sender, RoutedEventArgs e)
 		{
+			MadOtarGrits mog = new MadOtarGrits();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(gritsInstructions);
+			gritsInstructions.DataContext = mog;
+			((Order)this.DataContext).Add(mog);
+		}
+
+		void AddThugsTBone(object sender, RoutedEventArgs e)
+		{
+			((Order)this.DataContext).Add(new ThugsTBone());
+			GoToMenuSelection();
 		}
 
 		/// <summary>
@@ -212,8 +335,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToBriarheartInstructions(object sender, RoutedEventArgs e)
 		{
+			BriarheartBurger bb = new BriarheartBurger();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(briarheartBurger);
+			briarheartBurger.DataContext = bb;
+			((Order)this.DataContext).Add(bb);
 		}
 
 		/// <summary>
@@ -223,8 +349,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToDraugrInstructions(object sender, RoutedEventArgs e)
 		{
+			DoubleDraugr dd = new DoubleDraugr();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(doubleDraugr);
+			doubleDraugr.DataContext = dd;
+			((Order)this.DataContext).Add(dd);
 		}
 
 		/// <summary>
@@ -234,8 +363,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToThalmorInstructions(object sender, RoutedEventArgs e)
 		{
+			ThalmorTriple tt = new ThalmorTriple();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(thalmorTriple);
+			thalmorTriple.DataContext = tt;
+			((Order)this.DataContext).Add(tt);
 		}
 
 		/// <summary>
@@ -245,8 +377,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToSmokehouseInstructions(object sender, RoutedEventArgs e)
 		{
+			SmokehouseSkeleton ss = new SmokehouseSkeleton();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(smokehouseSkeleton);
+			smokehouseSkeleton.DataContext = ss;
+			((Order)this.DataContext).Add(ss);
 		}
 
 		/// <summary>
@@ -256,8 +391,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToGardenOrcInstructions(object sender, RoutedEventArgs e)
 		{
+			GardenOrcOmelette goo = new GardenOrcOmelette();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(gardenOrcOmelette);
+			gardenOrcOmelette.DataContext = goo;
+			((Order)this.DataContext).Add(goo);
 		}
 
 		/// <summary>
@@ -267,8 +405,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToPhillyPoacherInstructions(object sender, RoutedEventArgs e)
 		{
+			PhillyPoacher pp = new PhillyPoacher();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(phillyPoacher);
+			phillyPoacher.DataContext = pp;
+			((Order)this.DataContext).Add(pp);
 		}
 
 		/// <summary>
@@ -278,8 +419,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToSailorSodaInstructions(object sender, RoutedEventArgs e)
 		{
+			SailorSoda ss = new SailorSoda();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(sailorSoda);
+			sailorSoda.DataContext = ss;
+			((Order)this.DataContext).Add(ss);
 		}
 
 		/// <summary>
@@ -289,8 +433,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToCandlehearthInstructions(object sender, RoutedEventArgs e)
 		{
+			CandlehearthCoffee cc = new CandlehearthCoffee();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(candlehearthCoffee);
+			candlehearthCoffee.DataContext = cc;
+			((Order)this.DataContext).Add(cc);
 		}
 
 		/// <summary>
@@ -300,8 +447,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToMarkarthMilkInstructions(object sender, RoutedEventArgs e)
 		{
+			MarkarthMilk mm = new MarkarthMilk();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(milkInstructions);
+			milkInstructions.DataContext = mm;
+			((Order)this.DataContext).Add(mm);
 		}
 
 		/// <summary>
@@ -311,8 +461,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToAretinoAppleJuiceInstructions(object sender, RoutedEventArgs e)
 		{
+			AretinoAppleJuice aa = new AretinoAppleJuice();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(applejuiceInstructions);
+			applejuiceInstructions.DataContext = aa;
+			((Order)this.DataContext).Add(aa);
 		}
 
 		/// <summary>
@@ -322,8 +475,11 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToWarriorWaterInstructions(object sender, RoutedEventArgs e)
 		{
+			WarriorWater ww = new WarriorWater();
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(waterInstructions);
+			waterInstructions.DataContext = ww;
+			((Order)this.DataContext).Add(ww);
 		}
 
 	}

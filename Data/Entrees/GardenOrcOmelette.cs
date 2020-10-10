@@ -17,7 +17,18 @@ namespace BleakwindBuffet.Data.Entrees
 	/// </summary>
 	public class GardenOrcOmelette : Entree, INotifyPropertyChanged
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+		public override event PropertyChangedEventHandler PropertyChanged;
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
 
 		// Default Properties
 		/// <summary>
@@ -69,6 +80,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -95,6 +107,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -121,6 +134,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -147,6 +161,7 @@ namespace BleakwindBuffet.Data.Entrees
 				}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 

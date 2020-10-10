@@ -20,6 +20,17 @@ namespace BleakwindBuffet.Data.Drinks
 	{
 		public override event PropertyChangedEventHandler PropertyChanged;
 
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
+
 		// Properties
 		/// <summary>
 		/// The price of this drink. Set to small by default
@@ -89,6 +100,7 @@ namespace BleakwindBuffet.Data.Drinks
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 
@@ -107,6 +119,7 @@ namespace BleakwindBuffet.Data.Drinks
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
 				}
 
 			}

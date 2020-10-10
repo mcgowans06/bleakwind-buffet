@@ -173,6 +173,29 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             {
                 mm.Size = Size.Large;
             });
+
+            Assert.PropertyChanged(mm, "Name", () =>
+            {
+                mm.Size = Size.Small;
+            });
+
+            Assert.PropertyChanged(mm, "Name", () =>
+            {
+                mm.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mm, "Name", () =>
+            {
+                mm.Size = Size.Large;
+            });
+
+        }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            MarkarthMilk mm = new MarkarthMilk();
+            Assert.Equal(mm.ToString(), mm.Name);
         }
     }
 }

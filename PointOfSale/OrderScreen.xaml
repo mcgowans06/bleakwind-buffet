@@ -23,20 +23,50 @@
                 <Setter Property="FontSize" Value="20"/>
             </Style>
         </Grid.Resources>
-        <TextBlock Name="orderNum" Grid.ColumnSpan="2" Grid.Row="0" TextAlignment="Center" FontSize="20" FontWeight="Bold">
-            Order #1
-        </TextBlock>
-        <ListView Name="orderList" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Name="orderNum" TextAlignment="Center" FontSize="20" FontWeight="Bold">
+                Order #
+            </TextBlock>
+            <TextBlock Text="{Binding Path=Number}" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+        <ListView Name="orderList" Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Name="orderName" Text="{Binding Path=Name}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>
+                                $
+                            </TextBlock>
+                            <TextBlock Name="orderPrice" Text="{Binding Path=Price}"/>
+                        </StackPanel>
+                        <ListView ItemsSource="{Binding Path=SpecialInstructions}"/>
+                        <Button Name="removeButton" Click="RemoveButtonClick" DataContext="{Binding}">
+                            Remove
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackPanel Grid.Row="2"  Grid.ColumnSpan="2">
-            <TextBlock Name="subtotal" Grid.Row="2" TextAlignment="Center" FontSize="15" FontWeight="Bold">
-                Subtotal: $0.00
-            </TextBlock>
-            <TextBlock Name="tax" Grid.Row="3" TextAlignment="Center" FontSize="15" FontWeight="Bold">
-                Tax: $0.00
-            </TextBlock>
-            <TextBlock Name="total" Grid.Row="4" TextAlignment="Center" FontSize="15" FontWeight="Bold">
-                Total: $0.00
-            </TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="15" FontWeight="Bold">
+                    Subtotal: $
+                </TextBlock>
+                <TextBlock Text="{Binding Path=Subtotal}" TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Grid.Row="3" TextAlignment="Center" FontSize="15" FontWeight="Bold">
+                    Tax: $
+                </TextBlock>
+                <TextBlock Text="{Binding Path=Tax}" Grid.Row="3" TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="total" Grid.Row="4" TextAlignment="Center" FontSize="15" FontWeight="Bold">
+                    Total: $
+                </TextBlock>
+                <TextBlock Text="{Binding Path=Total}" Grid.Row="3" TextAlignment="Center" FontSize="15" FontWeight="Bold"/>
+            </StackPanel>
         </StackPanel>
         <Button Name="completeButton" Grid.Row="3" Grid.Column="0">
             Complete

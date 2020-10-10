@@ -16,6 +16,18 @@ namespace BleakwindBuffet.Data.Sides
 	/// </summary>
 	public class DragonbornWaffleFries : Side
 	{
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
+
 		// Properties
 		/// <summary>
 		/// Price of this side. Initially set to small

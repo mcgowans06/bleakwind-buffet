@@ -17,6 +17,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Entrees;
+using BleakwindBuffet.Data.Sides;
 
 namespace PointOfSale
 {
@@ -28,6 +32,74 @@ namespace PointOfSale
 		public OrderScreen()
 		{
 			InitializeComponent();
+		}
+
+		void RemoveButtonClick(object sender, RoutedEventArgs e)
+		{
+			if (((Button)sender).DataContext is BriarheartBurger bb)
+			{
+				((Order)this.DataContext).Remove(bb);
+			}
+			else if (((Button)sender).DataContext is DoubleDraugr dd)
+			{
+				((Order)this.DataContext).Remove(dd);
+			}
+			else if (((Button)sender).DataContext is GardenOrcOmelette goo)
+			{
+				((Order)this.DataContext).Remove(goo);
+			}
+			else if (((Button)sender).DataContext is PhillyPoacher pp)
+			{
+				((Order)this.DataContext).Remove(pp);
+			}
+			else if (((Button)sender).DataContext is SmokehouseSkeleton ss)
+			{
+				((Order)this.DataContext).Remove(ss);
+			}
+			else if (((Button)sender).DataContext is ThalmorTriple tt)
+			{
+				((Order)this.DataContext).Remove(tt);
+			}
+			else if (((Button)sender).DataContext is ThugsTBone ttb)
+			{
+				((Order)this.DataContext).Remove(ttb);
+			}
+			else if (((Button)sender).DataContext is AretinoAppleJuice aa)
+			{
+				((Order)this.DataContext).Remove(aa);
+			}
+			else if (((Button)sender).DataContext is CandlehearthCoffee cc)
+			{
+				((Order)this.DataContext).Remove(cc);
+			}
+			else if (((Button)sender).DataContext is MarkarthMilk mm)
+			{
+				((Order)this.DataContext).Remove(mm);
+			}
+			else if (((Button)sender).DataContext is SailorSoda sss)
+			{
+				((Order)this.DataContext).Remove(sss);
+			}
+			else if (((Button)sender).DataContext is WarriorWater ww)
+			{
+				((Order)this.DataContext).Remove(ww);
+			}
+			else if (((Button)sender).DataContext is DragonbornWaffleFries dwf)
+			{
+				((Order)this.DataContext).Remove(dwf);
+			}
+			else if (((Button)sender).DataContext is FriedMiraak fm)
+			{
+				((Order)this.DataContext).Remove(fm);
+			}
+			else if (((Button)sender).DataContext is MadOtarGrits mog)
+			{
+				((Order)this.DataContext).Remove(mog);
+			}
+			else if (((Button)sender).DataContext is VokunSalad vs)
+			{
+				((Order)this.DataContext).Remove(vs);
+			}
 		}
 	}
 }

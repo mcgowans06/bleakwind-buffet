@@ -16,6 +16,18 @@ namespace BleakwindBuffet.Data.Sides
 	/// </summary>
 	public class FriedMiraak : Side
 	{
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
+
 		// Properties
 		/// <summary>
 		/// Price of this side. Set initially to small

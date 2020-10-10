@@ -245,5 +245,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 bb.Cheese = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            BriarheartBurger bb = new BriarheartBurger();
+            Assert.Equal(bb.ToString(), bb.Name);
+        }
     }
 }

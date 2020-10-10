@@ -207,5 +207,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 goo.Cheddar = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+            Assert.Equal(goo.ToString(), goo.Name);
+        }
     }
 }

@@ -258,6 +258,28 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             {
                 ss.Size = Size.Large;
             });
+
+            Assert.PropertyChanged(ss, "Name", () =>
+            {
+                ss.Size = Size.Small;
+            });
+
+            Assert.PropertyChanged(ss, "Name", () =>
+            {
+                ss.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(ss, "Name", () =>
+            {
+                ss.Size = Size.Large;
+            });
+        }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            SailorSoda ss = new SailorSoda();
+            Assert.Equal(ss.ToString(), ss.Name);
         }
     }
 }

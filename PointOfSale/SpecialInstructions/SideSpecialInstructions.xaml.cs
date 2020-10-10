@@ -33,15 +33,19 @@ namespace PointOfSale.SpecialInstructions
 			{
 				case "dragonborn":
 					this.DataContext = new DragonbornWaffleFries();
+					sideName.Text = "Dragonborn Waffle Fries ";
 					break;
 				case "miraak":
 					this.DataContext = new FriedMiraak();
+					sideName.Text = "Fried Miraak ";
 					break;
 				case "salad":
 					this.DataContext = new VokunSalad();
+					sideName.Text = "Vokun Salad ";
 					break;
 				case "grits":
 					this.DataContext = new MadOtarGrits();
+					sideName.Text = "Mad Otar Grits ";
 					break;
 				default:
 					throw new NotImplementedException("Should never be reached");

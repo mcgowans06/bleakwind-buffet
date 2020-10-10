@@ -123,6 +123,21 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 dwf.Size = Size.Large;
             });
 
+            Assert.PropertyChanged(dwf, "Name", () =>
+            {
+                dwf.Size = Size.Small;
+            });
+
+            Assert.PropertyChanged(dwf, "Name", () =>
+            {
+                dwf.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(dwf, "Name", () =>
+            {
+                dwf.Size = Size.Large;
+            });
+
             Assert.PropertyChanged(dwf, "Calories", () =>
             {
                 dwf.Size = Size.Small;
@@ -137,6 +152,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
             {
                 dwf.Size = Size.Large;
             });
+        }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            DragonbornWaffleFries bb = new DragonbornWaffleFries();
+            Assert.Equal(bb.ToString(), bb.Name);
         }
     }
 }

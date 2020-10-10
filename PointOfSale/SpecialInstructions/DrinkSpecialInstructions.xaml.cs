@@ -33,12 +33,11 @@ namespace PointOfSale.SpecialInstructions
 			{
 				case "milk":
 					this.DataContext = new MarkarthMilk();
+					drinkName.Text = "Markarth Milk ";
 					break;
 				case "applejuice":
 					this.DataContext = new AretinoAppleJuice();
-					break;
-				case "water":
-					this.DataContext = new WarriorWater();
+					drinkName.Text = "Aretino Apple Juice ";
 					break;
 				default:
 					throw new NotImplementedException("Should never be reached");

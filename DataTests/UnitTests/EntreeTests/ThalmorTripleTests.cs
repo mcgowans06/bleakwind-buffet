@@ -437,5 +437,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 tt.Egg = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            ThalmorTriple tt = new ThalmorTriple();
+            Assert.Equal(tt.ToString(), tt.Name);
+        }
     }
 }

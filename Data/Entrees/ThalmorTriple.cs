@@ -17,7 +17,18 @@ namespace BleakwindBuffet.Data.Entrees
 	/// </summary>
 	public class ThalmorTriple : Entree, INotifyPropertyChanged
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+		public override event PropertyChangedEventHandler PropertyChanged;
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
 
 		// Default Properties
 		/// <summary>
@@ -74,6 +85,7 @@ namespace BleakwindBuffet.Data.Entrees
 						specialInstructions.Remove("Hold bun");
 					}
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bun"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 				}
 
 			}
@@ -102,6 +114,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ketchup"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -128,6 +141,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mustard"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -154,6 +168,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pickle"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -180,6 +195,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheese"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 
@@ -207,6 +223,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -233,6 +250,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lettuce"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -259,6 +277,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mayo"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -285,6 +304,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Bacon"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 		/// <summary>
@@ -311,6 +331,7 @@ namespace BleakwindBuffet.Data.Entrees
 					}
 				}
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 			}
 		}
 

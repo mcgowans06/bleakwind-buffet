@@ -169,5 +169,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 pp.Roll = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            PhillyPoacher pp = new PhillyPoacher();
+            Assert.Equal(pp.ToString(), pp.Name);
+        }
     }
 }

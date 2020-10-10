@@ -7,14 +7,31 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
 	/// <summary>
 	/// Public class representing the Thugs T-Bone
 	/// </summary>
-	public class ThugsTBone : Entree
+	public class ThugsTBone : Entree, INotifyPropertyChanged
 	{
+		/// <summary>
+		/// This does nothing because no property ever changes
+		/// </summary>
+		public override event PropertyChangedEventHandler PropertyChanged;
+
+		/// <summary>
+		/// Property that returns the ToString method
+		/// </summary>
+		public string Name
+		{
+			get
+			{
+				return (ToString());
+			}
+		}
+
 		// Default Properties
 		/// <summary>
 		/// Prive of this entree

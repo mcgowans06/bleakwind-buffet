@@ -13,11 +13,12 @@ using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data.Enums;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests
 {
 	public class MenuTests
-	{
+	{ 
 		[Fact]
 		public void ShouldContainAllEntrees()
 		{
@@ -139,6 +140,62 @@ namespace BleakwindBuffet.DataTests.UnitTests
 												x => Assert.Equal("Small Warrior Water", x.ToString()),
 												x => Assert.Equal("Medium Warrior Water", x.ToString()),
 												x => Assert.Equal("Large Warrior Water", x.ToString()));
+
+		}
+
+		[Fact]
+		public void AllMenuItemsImplementsINotifyPropertyChanged()
+		{
+			Assert.Collection<IOrderItem>(Menu.FullMenu(),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x),
+												x => Assert.IsAssignableFrom<INotifyPropertyChanged>(x)); 
 
 		}
 	}

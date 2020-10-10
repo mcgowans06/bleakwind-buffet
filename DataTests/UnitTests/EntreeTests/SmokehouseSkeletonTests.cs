@@ -207,5 +207,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 ss.HashBrowns = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+            Assert.Equal(ss.ToString(), ss.Name);
+        }
     }
 }

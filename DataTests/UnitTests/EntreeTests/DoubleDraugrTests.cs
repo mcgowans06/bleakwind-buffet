@@ -360,5 +360,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                 dd.Mayo = true;
             });
         }
+
+        [Fact]
+        public void NamePropertyGetsToString()
+        {
+            DoubleDraugr dd = new DoubleDraugr();
+            Assert.Equal(dd.ToString(), dd.Name);
+        }
     }
 }
