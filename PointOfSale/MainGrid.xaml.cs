@@ -36,6 +36,7 @@ namespace PointOfSale
 		EntreeMenu entreeMenu = new EntreeMenu();
 		DrinkMenu drinkMenu = new DrinkMenu();
 		SideMenu sideMenu = new SideMenu();
+		Combo combo = new Combo();
 		BriarheartBurgerInstructions briarheartBurger = new BriarheartBurgerInstructions();
 		DoubleDraugrInstructions doubleDraugr = new DoubleDraugrInstructions();
 		ThalmorTripleInstructions thalmorTriple = new ThalmorTripleInstructions();
@@ -63,6 +64,7 @@ namespace PointOfSale
 			menuSelect.entreesButton.Click += GoToEntreeMenu;
 			menuSelect.drinksButton.Click += GoToDrinkMenu;
 			menuSelect.sidesButton.Click += GoToSideMenu;
+			menuSelect.comboButton.Click += AddCombo;
 			entreeMenu.backButton.Click += BackButtonClick;
 			drinkMenu.backButton.Click += BackButtonClick;
 			sideMenu.backButton.Click += BackButtonClick;
@@ -124,6 +126,55 @@ namespace PointOfSale
 		}
 
 		/// <summary>
+		/// Adds a combo to the order
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void AddCombo(object sender, RoutedEventArgs e)
+		{
+			combo = new Combo();
+			((Order)this.DataContext).Add(combo);
+			
+			/*orderScreen.orderList.SelectedIndex = orderScreen.orderList.Items.Count - 1;
+			ListViewItem myListViewItem = (ListViewItem)(orderScreen.orderList.ItemContainerGenerator.ContainerFromItem(orderScreen.orderList.SelectedItem));
+			ContentPresenter contentPresenter = FindVisualChild<ContentPresenter>(myListViewItem);
+			DataTemplate dataTemplate = contentPresenter.ContentTemplate;
+			StackPanel sp = dataTemplate.FindName("TemplateStack", contentPresenter) as StackPanel;
+			if (sp != null)
+			{
+				if (sp.Children[2] is ListView comboList)
+				{
+					comboList.SelectionChanged += ComboSelection;
+				}
+			}*/
+		}
+
+		/// <summary>
+		/// Finds the visual child
+		/// </summary>
+		/// <typeparam name="childItem"></typeparam>
+		/// <param name="obj"></param>
+		/// <returns>the visual child</returns>
+		private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
+		{
+			for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+			{
+				DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+				if (child != null && child is childItem)
+				{
+					return (childItem)child;
+				}
+				else
+				{
+					childItem childOfChild = FindVisualChild<childItem>(child);
+					if (childOfChild != null)
+						return childOfChild;
+				}
+			}
+			return null;
+		}
+
+		/// <summary>
 		/// Event handler for the back buttons
 		/// </summary>
 		/// <param name="sender"></param>
@@ -141,6 +192,109 @@ namespace PointOfSale
 		void DoneButtonClick(object sender, RoutedEventArgs e)
 		{
 			GoToMenuSelection();
+		}
+
+		/// <summary>
+		/// Event handler for the combo list
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void ComboSelection(object sender, SelectionChangedEventArgs e)
+		{
+			if(sender is ListView comboList)
+			{
+				if (comboList.SelectedItem is string s)
+				{
+					if (s == "Click Me To Add Entree")
+					{
+						GoToEntreeMenu(comboList, new RoutedEventArgs());
+
+					}
+					else if (s == "Click Me To Add Drink")
+					{
+						GoToDrinkMenu(comboList, new RoutedEventArgs());
+					}
+					else if (s == "Click Me To Add Side")
+					{
+						GoToSideMenu(comboList, new RoutedEventArgs());
+					}
+					else if (s.Contains("Burger"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(briarheartBurger);
+					}
+					else if (s.Contains("Draugr"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(doubleDraugr);
+					}
+					else if (s.Contains("Omelette"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(gardenOrcOmelette);
+					}
+					else if (s.Contains("Philly"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(phillyPoacher);
+					}
+					else if (s.Contains("Smokehouse"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(smokehouseSkeleton);
+					}
+					else if (s.Contains("Triple"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(thalmorTriple);
+					}
+					else if (s.Contains("Aretino"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(applejuiceInstructions);
+					}
+					else if (s.Contains("Coffee"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(candlehearthCoffee);
+					}
+					else if (s.Contains("Milk"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(milkInstructions);
+					}
+					else if (s.Contains("Sailor"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(sailorSoda);
+					}
+					else if (s.Contains("Water"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(waterInstructions);
+					}
+					else if (s.Contains("Dragonborn"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(dragonbornInstructions);
+					}
+					else if (s.Contains("Fried"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(miraakInstructions);
+					}
+					else if (s.Contains("Grits"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(gritsInstructions);
+					}
+					else if (s.Contains("Vokun"))
+					{
+						mainGrid.Children.RemoveAt(1);
+						mainGrid.Children.Add(saladInstructions);
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -243,6 +397,14 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToEntreeMenu(object sender, RoutedEventArgs e)
 		{
+			if(sender is ListView)
+			{
+				entreeMenu.FromCombo = true;
+			}
+			else
+			{
+				entreeMenu.FromCombo = false;
+			}
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(entreeMenu);
 		}
@@ -254,6 +416,14 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToDrinkMenu(object sender, RoutedEventArgs e)
 		{
+			if (sender is ListView)
+			{
+				drinkMenu.FromCombo = true;
+			}
+			else
+			{
+				drinkMenu.FromCombo = false;
+			}
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(drinkMenu);
 		}
@@ -265,6 +435,14 @@ namespace PointOfSale
 		/// <param name="e"></param>
 		void GoToSideMenu(object sender, RoutedEventArgs e)
 		{
+			if (sender is ListView)
+			{
+				sideMenu.FromCombo = true;
+			}
+			else
+			{
+				sideMenu.FromCombo = false;
+			}
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(sideMenu);
 		}
@@ -280,7 +458,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(dragonbornInstructions);
 			dragonbornInstructions.DataContext = dwf;
-			((Order)this.DataContext).Add(dwf);
+			if (sideMenu.FromCombo)
+			{
+				combo.Side = dwf;
+			}
+			else ((Order)this.DataContext).Add(dwf);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Fried Miraak special instructions
@@ -293,7 +475,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(miraakInstructions);
 			miraakInstructions.DataContext = fm;
-			((Order)this.DataContext).Add(fm);
+			if (sideMenu.FromCombo)
+			{
+				combo.Side = fm;
+			}
+			else ((Order)this.DataContext).Add(fm);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Vokun Salad special instructions
@@ -306,7 +492,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(saladInstructions);
 			saladInstructions.DataContext = vs;
-			((Order)this.DataContext).Add(vs);
+			if (sideMenu.FromCombo)
+			{
+				combo.Side = vs;
+			}
+			else ((Order)this.DataContext).Add(vs);
 		}
 		/// <summary>
 		/// Event handler that Goes to the Mad Otar Grits special instructions
@@ -319,12 +509,20 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(gritsInstructions);
 			gritsInstructions.DataContext = mog;
-			((Order)this.DataContext).Add(mog);
+			if (sideMenu.FromCombo)
+			{
+				combo.Side = mog;
+			}
+			else ((Order)this.DataContext).Add(mog);
 		}
 
 		void AddThugsTBone(object sender, RoutedEventArgs e)
 		{
-			((Order)this.DataContext).Add(new ThugsTBone());
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = new ThugsTBone();
+			}
+			else ((Order)this.DataContext).Add(new ThugsTBone());
 			GoToMenuSelection();
 		}
 
@@ -339,7 +537,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(briarheartBurger);
 			briarheartBurger.DataContext = bb;
-			((Order)this.DataContext).Add(bb);
+			if(entreeMenu.FromCombo)
+			{
+				combo.Entree = bb;
+			}
+			else ((Order)this.DataContext).Add(bb);
 		}
 
 		/// <summary>
@@ -353,7 +555,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(doubleDraugr);
 			doubleDraugr.DataContext = dd;
-			((Order)this.DataContext).Add(dd);
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = dd;
+			}
+			else ((Order)this.DataContext).Add(dd);
 		}
 
 		/// <summary>
@@ -367,7 +573,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(thalmorTriple);
 			thalmorTriple.DataContext = tt;
-			((Order)this.DataContext).Add(tt);
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = tt;
+			}
+			else ((Order)this.DataContext).Add(tt);
 		}
 
 		/// <summary>
@@ -381,7 +591,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(smokehouseSkeleton);
 			smokehouseSkeleton.DataContext = ss;
-			((Order)this.DataContext).Add(ss);
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = ss;
+			}
+			else ((Order)this.DataContext).Add(ss);
 		}
 
 		/// <summary>
@@ -395,7 +609,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(gardenOrcOmelette);
 			gardenOrcOmelette.DataContext = goo;
-			((Order)this.DataContext).Add(goo);
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = goo;
+			}
+			else ((Order)this.DataContext).Add(goo);
 		}
 
 		/// <summary>
@@ -409,7 +627,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(phillyPoacher);
 			phillyPoacher.DataContext = pp;
-			((Order)this.DataContext).Add(pp);
+			if (entreeMenu.FromCombo)
+			{
+				combo.Entree = pp;
+			}
+			else ((Order)this.DataContext).Add(pp);
 		}
 
 		/// <summary>
@@ -423,7 +645,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(sailorSoda);
 			sailorSoda.DataContext = ss;
-			((Order)this.DataContext).Add(ss);
+			if (drinkMenu.FromCombo)
+			{
+				combo.Drink = ss;
+			}
+			else ((Order)this.DataContext).Add(ss);
 		}
 
 		/// <summary>
@@ -437,7 +663,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(candlehearthCoffee);
 			candlehearthCoffee.DataContext = cc;
-			((Order)this.DataContext).Add(cc);
+			if (drinkMenu.FromCombo)
+			{
+				combo.Drink = cc;
+			}
+			else ((Order)this.DataContext).Add(cc);
 		}
 
 		/// <summary>
@@ -451,7 +681,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(milkInstructions);
 			milkInstructions.DataContext = mm;
-			((Order)this.DataContext).Add(mm);
+			if (drinkMenu.FromCombo)
+			{
+				combo.Drink = mm;
+			}
+			else ((Order)this.DataContext).Add(mm);
 		}
 
 		/// <summary>
@@ -465,7 +699,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(applejuiceInstructions);
 			applejuiceInstructions.DataContext = aa;
-			((Order)this.DataContext).Add(aa);
+			if (drinkMenu.FromCombo)
+			{
+				combo.Drink = aa;
+			}
+			else ((Order)this.DataContext).Add(aa);
 		}
 
 		/// <summary>
@@ -479,7 +717,11 @@ namespace PointOfSale
 			mainGrid.Children.RemoveAt(1);
 			mainGrid.Children.Add(waterInstructions);
 			waterInstructions.DataContext = ww;
-			((Order)this.DataContext).Add(ww);
+			if (drinkMenu.FromCombo)
+			{
+				combo.Drink = ww;
+			}
+			else ((Order)this.DataContext).Add(ww);
 		}
 
 	}

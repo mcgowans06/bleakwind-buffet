@@ -10,19 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BleakwindBuffet.Data;
 
-namespace PointOfSale
+namespace PointOfSale.SpecialInstructions
 {
 	/// <summary>
-	/// Interaction logic for OrderItemText.xaml
+	/// Interaction logic for ComboInstructions.xaml
 	/// </summary>
-	public partial class OrderItemText : UserControl
+	public partial class ComboInstructions : UserControl
 	{
-		public OrderItemText(IOrderItem item)
+		public ComboInstructions()
 		{
 			InitializeComponent();
-			this.DataContext = item;
 		}
 	}
 }

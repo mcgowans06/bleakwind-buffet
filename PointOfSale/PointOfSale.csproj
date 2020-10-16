@@ -16,6 +16,7 @@
     <None Remove="Pics\Dragonborn Waffle Fries.jpg" />
     <None Remove="Pics\Dragonborn Waffle Fries.png" />
     <None Remove="Pics\Draugr Double.jpg" />
+    <None Remove="Pics\Exodia.jpg" />
     <None Remove="Pics\Fried Miraak.jpg" />
     <None Remove="Pics\Garden Orc Omelette.jpg" />
     <None Remove="Pics\Mad Otar Grits.jpg" />
@@ -43,6 +44,7 @@
     <Resource Include="Pics\Dragonborn Waffle Fries.jpg" />
     <Resource Include="Pics\Dragonborn Waffle Fries.png" />
     <Resource Include="Pics\Draugr Double.jpg" />
+    <Resource Include="Pics\Exodia.jpg" />
     <Resource Include="Pics\Fried Miraak.jpg" />
     <Resource Include="Pics\Garden Orc Omelette.jpg" />
     <Resource Include="Pics\Mad Otar Grits.jpg" />

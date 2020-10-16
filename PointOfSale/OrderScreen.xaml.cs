@@ -29,14 +29,41 @@ namespace PointOfSale
 	/// </summary>
 	public partial class OrderScreen : UserControl
 	{
+		ListView specialInstructions;
+		public ListView SpecialInstructions
+		{
+			get { return (specialInstructions); }
+		}
+
 		public OrderScreen()
 		{
 			InitializeComponent();
 		}
 
+		void ListSelectionLoaded(object sender, RoutedEventArgs e)
+		{
+			if(sender is ListView lw)
+			{
+				DependencyObject parent = this;
+				do
+				{
+					parent = LogicalTreeHelper.GetParent(parent);
+				}
+				while(!(parent is null || parent is MainGrid));
+				if(parent is MainGrid mainGrid)
+				{
+					lw.SelectionChanged += mainGrid.ComboSelection;
+				}
+			}
+		}
+
 		void RemoveButtonClick(object sender, RoutedEventArgs e)
 		{
-			if (((Button)sender).DataContext is BriarheartBurger bb)
+			if (((Button)sender).DataContext is Combo combo)
+			{
+				((Order)this.DataContext).Remove(combo);
+			}
+			else if (((Button)sender).DataContext is BriarheartBurger bb)
 			{
 				((Order)this.DataContext).Remove(bb);
 			}

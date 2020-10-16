@@ -25,6 +25,14 @@ namespace BleakwindBuffet.Data
 		/// </summary>
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		public string Name
+		{
+			get
+			{
+				return ("Combo:");
+			}
+		}
+
 		private Entree entree;
 		/// <summary>
 		/// The entree of the combo
@@ -42,12 +50,16 @@ namespace BleakwindBuffet.Data
 					if(entree != null)
 					{
 						entree.PropertyChanged -= OnSpecialInstructionsChanged;
+						entree.PropertyChanged -= OnPriceChanged;
+						entree.PropertyChanged -= OnCaloriesChanged;
 					}
 					entree = value;
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Entree"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+					entree.PropertyChanged += OnSpecialInstructionsChanged;
+					entree.PropertyChanged += OnCaloriesChanged;
 					entree.PropertyChanged += OnSpecialInstructionsChanged;
 				}
 			}
@@ -124,7 +136,11 @@ namespace BleakwindBuffet.Data
 		{
 			get
 			{
-				return (Entree.Price + Side.Price + Drink.Price);
+				double price = 0;
+				if (Entree != null) price += Entree.Price;
+				if (Drink != null) price += Drink.Price;
+				if (Side != null) price += Side.Price;
+				return (Math.Round(price, 2));
 			}
 		}
 
@@ -135,7 +151,9 @@ namespace BleakwindBuffet.Data
 		{
 			get
 			{
-				return (Entree.Calories + Side.Calories + Drink.Calories);
+				if (Entree != null && Side != null && Drink != null)
+					return (Entree.Calories + Side.Calories + Drink.Calories);
+				return (0);
 			}
 		}
 
@@ -147,18 +165,42 @@ namespace BleakwindBuffet.Data
 			get
 			{
 				List<string> list = new List<string>();
-				// Entree special instructions
-				list.Add(Entree.ToString());
-				foreach(string s in Entree.SpecialInstructions)
+				if (Entree != null)
 				{
-					list.Add("*" + s);
+					// Entree special instructions
+					list.Add(Entree.ToString());
+					foreach (string s in Entree.SpecialInstructions)
+					{
+						list.Add("*" + s);
+					}
+				}
+				else
+				{
+					list.Add("Click Me To Add Entree");
+				}
+				
+				if(Drink != null)
+				{
+					//Drink special instructions
+					list.Add(Drink.ToString());
+					foreach(string s in Drink.SpecialInstructions)
+					{
+						list.Add("*" + s);
+					}
+				}
+				else
+				{
+					list.Add("Click Me To Add Drink");
 				}
 
-				//Drink special instructions
-				list.Add(Drink.ToString());
-				foreach(string s in Drink.SpecialInstructions)
+				if(Side != null)
 				{
-					list.Add("*" + s);
+					// Side special instructions
+					list.Add(Side.ToString());
+				}
+				else
+				{
+					list.Add("Click Me To Add Side");
 				}
 				return (list);
 			}

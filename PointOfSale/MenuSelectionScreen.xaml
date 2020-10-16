@@ -12,6 +12,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -54,6 +55,18 @@
                     <Image Source="Pics/ButtonSides.jpg" Stretch="Uniform"/>
                     <TextBlock TextAlignment="Center" FontWeight="ExtraBlack" FontSize="40" VerticalAlignment="Center" Opacity="1" Foreground="ForestGreen">
                         Sides
+                    </TextBlock>
+                </Grid>
+            </Button>
+        </Border>
+
+        <!-- Border than holds the Sides button with the associated image and text -->
+        <Border BorderBrush="LightGray" BorderThickness="3" CornerRadius="3" Grid.Row="1" Grid.Column="3">
+            <Button Name="comboButton">
+                <Grid>
+                    <Image Source="Pics/Exodia.jpg" Stretch="Uniform"/>
+                    <TextBlock TextAlignment="Center" FontWeight="ExtraBlack" FontSize="40" VerticalAlignment="Center" Opacity="1" Foreground="MediumVioletRed">
+                        Combo
                     </TextBlock>
                 </Grid>
             </Button>

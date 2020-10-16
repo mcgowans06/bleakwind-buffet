@@ -25,6 +25,10 @@ namespace PointOfSale
 	/// </summary>
 	public partial class DrinkMenu : UserControl
 	{
+		/// <summary>
+		/// vool that represents whether or not we entered the menu from a combo
+		/// </summary>
+		public bool FromCombo { get; set; } = false;
 		public DrinkMenu()
 		{
 			InitializeComponent();

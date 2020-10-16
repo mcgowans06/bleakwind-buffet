@@ -90,6 +90,7 @@ namespace BleakwindBuffet.Data.Drinks
 				{
 					_decaf = value;
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 				}
 			}
 		}
@@ -165,6 +166,7 @@ namespace BleakwindBuffet.Data.Drinks
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
+					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 				}
 
 			}
