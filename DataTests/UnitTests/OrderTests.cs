@@ -24,7 +24,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void OrderNumberIsIncrementedWhenCreatingNewOrder()
         {
             Order order = new Order();
-            uint x = 12; // Start at 12 because by the time the tests get to this fact 11 orders have already been made
+            uint x = 13; // Start at 13 because by the time the tests get to this fact 12 orders have already been made
             Assert.Equal(x, order.Number);
             order = new Order();
             x++;

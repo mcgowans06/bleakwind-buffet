@@ -13,6 +13,9 @@
     <None Remove="Pics\ButtonEntree.jpg" />
     <None Remove="Pics\ButtonSides.jpg" />
     <None Remove="Pics\Candleheart Coffee.jpg" />
+    <None Remove="Pics\Card.jpg" />
+    <None Remove="Pics\Cash.jpg" />
+    <None Remove="Pics\Cash.png" />
     <None Remove="Pics\Dragonborn Waffle Fries.jpg" />
     <None Remove="Pics\Dragonborn Waffle Fries.png" />
     <None Remove="Pics\Draugr Double.jpg" />
@@ -35,12 +38,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="RoundRegister">
+      <HintPath>RoundRegister.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Pics\Aretino Apple Juice.jpg" />
     <Resource Include="Pics\Briarheart Burger.jpg" />
     <Resource Include="Pics\ButtonDrinks.jpg" />
     <Resource Include="Pics\ButtonEntree.jpg" />
     <Resource Include="Pics\ButtonSides.jpg" />
     <Resource Include="Pics\Candleheart Coffee.jpg" />
+    <Resource Include="Pics\Card.jpg" />
+    <Resource Include="Pics\Cash.jpg" />
+    <Resource Include="Pics\Cash.png" />
     <Resource Include="Pics\Dragonborn Waffle Fries.jpg" />
     <Resource Include="Pics\Dragonborn Waffle Fries.png" />
     <Resource Include="Pics\Draugr Double.jpg" />

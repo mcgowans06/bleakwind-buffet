@@ -151,6 +151,10 @@ namespace BleakwindBuffet.Data
 					((Side)orderItems[Count - 1]).PropertyChanged += OnPriceChanged;
 					((Side)orderItems[Count - 1]).PropertyChanged += OnCaloriesChanged;
 				}
+				else if(item is Combo)
+				{
+					((Combo)item).PropertyChanged += OnPriceChanged;
+				}
 			}
 		}
 
@@ -171,6 +175,10 @@ namespace BleakwindBuffet.Data
 				{
 					((Side)orderItems[orderItems.IndexOf(item)]).PropertyChanged -= OnPriceChanged;
 					((Side)orderItems[orderItems.IndexOf(item)]).PropertyChanged -= OnCaloriesChanged;
+				}
+				else if (item is Combo)
+				{
+					((Combo)item).PropertyChanged -= OnPriceChanged;
 				}
 				CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, orderItems.IndexOf(item)));
 				orderItems.Remove(item);
@@ -197,6 +205,10 @@ namespace BleakwindBuffet.Data
 				{
 					((Side)orderItems[orderItems.IndexOf(item)]).PropertyChanged -= OnPriceChanged;
 					((Side)orderItems[orderItems.IndexOf(item)]).PropertyChanged -= OnCaloriesChanged;
+				}
+				else if (item is Combo)
+				{
+					((Combo)item).PropertyChanged -= OnPriceChanged;
 				}
 			}
 			orderItems.Clear();

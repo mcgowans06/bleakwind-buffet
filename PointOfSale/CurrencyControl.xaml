@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="PointOfSale.CurrencyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="local:CurrencyControl">
+            <Style.Triggers>
+                <Trigger Property="CurrencyType" Value='$'>
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="CurrencyType" Value='¢'>
+                    <Setter Property="Background" Value="SandyBrown"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <Border BorderThickness="2" Grid.Column="0" BorderBrush="LightGray">
+            <TextBlock Name="currencyText" Grid.Column="0" Text="{Binding Path=CurrencyValue, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CurrencyControl}}"/>
+        </Border>
+        <Border Background="White" BorderThickness="2" Grid.Column="2" BorderBrush="LightGray">
+            <TextBlock Name="customerText" Text="{Binding Path=CustomerQuantity, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CurrencyControl}}"/>
+        </Border>
+        <Border Background="White" BorderThickness="2" Grid.Column="4" BorderBrush="Lime">
+            <TextBlock Name="changeText" Text="{Binding Path=ChangeQuantity, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CurrencyControl}}"/>
+        </Border>
+        <Button Name="plusButton" Click="PlusButtonClick" Grid.Column="1">
+            <TextBlock Text="+" FontSize="50"/>
+        </Button>
+        <Button Name="minusButton" Click="MinusButtonClick" Grid.Column="3">
+            <TextBlock Text="-" FontSize="50"/>
+        </Button>
+    </Grid>
+</UserControl>

@@ -37,6 +37,7 @@ namespace PointOfSale
 		DrinkMenu drinkMenu = new DrinkMenu();
 		SideMenu sideMenu = new SideMenu();
 		Combo combo = new Combo();
+		PaymentScreen paymentScreen = new PaymentScreen();
 		BriarheartBurgerInstructions briarheartBurger = new BriarheartBurgerInstructions();
 		DoubleDraugrInstructions doubleDraugr = new DoubleDraugrInstructions();
 		ThalmorTripleInstructions thalmorTriple = new ThalmorTripleInstructions();
@@ -87,6 +88,11 @@ namespace PointOfSale
 			gritsInstructions.doneButton.Click += DoneButtonClick;
 
 			orderScreen.cancelButton.Click += CancelButtonClick;
+			orderScreen.completeButton.Click += CompleteButtonClick;
+			
+			paymentScreen.backButton.Click += BackButtonClick;
+			paymentScreen.cardButton.Click += CardButtonClick;
+			paymentScreen.cashButton.Click += CashButtonClick;
 
 			// Entree menu event handlers to go to special instructions
 			entreeMenu.briarheartButton.Click += GoToBriarheartInstructions;
@@ -116,6 +122,50 @@ namespace PointOfSale
 		}
 
 		/// <summary>
+		/// Event handler for when the card button is clicked
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void CardButtonClick(object sender, RoutedEventArgs e)
+		{
+			if(RoundRegister.CardReader.RunCard(((Order)this.DataContext).Total) == RoundRegister.CardTransactionResult.Approved)
+			{
+				new ReceiptMaker((Order)this.DataContext);
+				CancelButtonClick(sender, e);
+				GoToMenuSelection();
+			}
+		}
+
+		/// <summary>
+		/// Event handler for when the cash button is clicked
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void CashButtonClick(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Remove(orderScreen);
+			CashRegisterView registerView = new CashRegisterView((Order)this.DataContext);
+			mainGrid.Children.Add(registerView);
+			Grid.SetColumnSpan(registerView, 2);
+			registerView.finalizeButton.Click += ReturnToOrdering;
+			registerView.finalizeButton.Click += CancelButtonClick;
+			registerView.backButton.Click += ReturnToOrdering;
+		}
+
+		/// <summary>
+		/// Event handler for when the return to order button is clicked
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void ReturnToOrdering(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(0);
+			mainGrid.Children.Add(orderScreen);
+			mainGrid.Children.Add(menuSelect);
+		}
+
+		/// <summary>
 		/// Cancels the current order and creates a new order
 		/// </summary>
 		/// <param name="sender"></param>
@@ -134,44 +184,6 @@ namespace PointOfSale
 		{
 			combo = new Combo();
 			((Order)this.DataContext).Add(combo);
-			
-			/*orderScreen.orderList.SelectedIndex = orderScreen.orderList.Items.Count - 1;
-			ListViewItem myListViewItem = (ListViewItem)(orderScreen.orderList.ItemContainerGenerator.ContainerFromItem(orderScreen.orderList.SelectedItem));
-			ContentPresenter contentPresenter = FindVisualChild<ContentPresenter>(myListViewItem);
-			DataTemplate dataTemplate = contentPresenter.ContentTemplate;
-			StackPanel sp = dataTemplate.FindName("TemplateStack", contentPresenter) as StackPanel;
-			if (sp != null)
-			{
-				if (sp.Children[2] is ListView comboList)
-				{
-					comboList.SelectionChanged += ComboSelection;
-				}
-			}*/
-		}
-
-		/// <summary>
-		/// Finds the visual child
-		/// </summary>
-		/// <typeparam name="childItem"></typeparam>
-		/// <param name="obj"></param>
-		/// <returns>the visual child</returns>
-		private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
-		{
-			for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-			{
-				DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-				if (child != null && child is childItem)
-				{
-					return (childItem)child;
-				}
-				else
-				{
-					childItem childOfChild = FindVisualChild<childItem>(child);
-					if (childOfChild != null)
-						return childOfChild;
-				}
-			}
-			return null;
 		}
 
 		/// <summary>
@@ -192,6 +204,17 @@ namespace PointOfSale
 		void DoneButtonClick(object sender, RoutedEventArgs e)
 		{
 			GoToMenuSelection();
+		}
+
+		/// <summary>
+		/// Event handler for the complete button
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void CompleteButtonClick(object sender, RoutedEventArgs e)
+		{
+			mainGrid.Children.RemoveAt(1);
+			mainGrid.Children.Add(paymentScreen);
 		}
 
 		/// <summary>
