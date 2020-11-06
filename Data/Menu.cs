@@ -2,6 +2,7 @@
 * Author: Samuel McGowan
 * Class name: Menu.cs
 * Purpose: To hold information for the static class Menu
+* Last Modified: 11/5/20
 */
 
 using System;
@@ -10,6 +11,7 @@ using System.Text;
 using BleakwindBuffet.Data.Entrees;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data.Drinks;
+using System.Linq;
 
 namespace BleakwindBuffet.Data
 {
@@ -175,6 +177,155 @@ namespace BleakwindBuffet.Data
 			yield return (new WarriorWater() { Size = Enums.Size.Small });
 			yield return (new WarriorWater() { Size = Enums.Size.Medium });
 			yield return (new WarriorWater() { Size = Enums.Size.Large });
+		}
+
+		/// <summary>
+		/// Filters the provided collection of menu items
+		/// to those of the given categories
+		/// </summary>
+		/// <param name="menu">The collection of to filter</param>
+		/// <param name="category">The categories to filter</param>
+		/// <returns>The filtered collection</returns>
+		public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> menu, IEnumerable<string> category)
+		{
+			// If no category is specified, just return the provided collection
+			if (category == null || category.Count() == 0) return menu;
+
+			// Filter the supplied collection of items
+			List<IOrderItem> results = new List<IOrderItem>();
+			foreach (IOrderItem item in menu)
+			{
+				if (item is Entree && category.Contains("Entree"))
+				{
+					results.Add(item);
+				}
+				else if (item is Side && category.Contains("Side"))
+				{
+					results.Add(item);
+				}
+				else if (item is Drink && category.Contains("Drink"))
+				{
+					results.Add(item);
+				}
+			}
+			return results;
+		}
+
+		/// <summary>
+		/// Filters the provided collection of menu items
+		/// to those of the given min and max calories
+		/// </summary>
+		/// <param name="menu">The collection of to filter</param>
+		/// <param name="min">The minimum number of calories to filter</param>
+		/// <param name="max">The maximum number of calories to filter</param>
+		/// <returns>The filtered collection</returns>
+		public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> menu, int? min, int? max)
+		{
+			if (min == null && max == null) return menu;
+
+			var results = new List<IOrderItem>();
+
+			// only a maximum specified
+			if (min == null)
+			{
+				foreach (IOrderItem item in menu)
+				{
+					if (item.Calories <= max) results.Add(item);
+				}
+				return results;
+			}
+
+			// only a minimum specified
+			if (max == null)
+			{
+				foreach (IOrderItem item in menu)
+				{
+					if (item.Calories >= min) results.Add(item);
+				}
+				return results;
+			}
+
+			// Both minimum and maximum specified
+			foreach (IOrderItem item in menu)
+			{
+				if (item.Calories >= min && item.Calories <= max)
+				{
+					results.Add(item);
+				}
+			}
+			return results;
+		}
+
+		/// <summary>
+		/// Filters the provided collection of menu items
+		/// to those of the given min and max price
+		/// </summary>
+		/// <param name="menu">The collection of to filter</param>
+		/// <param name="min">The minimum number of calories to filter</param>
+		/// <param name="max">The maximum number of calories to filter</param>
+		/// <returns>The filtered collection</returns>
+		public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> menu, double? min, double? max)
+		{
+			if (min == null && max == null) return menu;
+
+			var results = new List<IOrderItem>();
+
+			// only a maximum specified
+			if (min == null)
+			{
+				foreach (IOrderItem item in menu)
+				{
+					if (item.Price <= max) results.Add(item);
+				}
+				return results;
+			}
+
+			// only a minimum specified
+			if (max == null)
+			{
+				foreach (IOrderItem item in menu)
+				{
+					if (item.Price >= min) results.Add(item);
+				}
+				return results;
+			}
+
+			// Both minimum and maximum specified
+			foreach (IOrderItem item in menu)
+			{
+				if (item.Price >= min && item.Price <= max)
+				{
+					results.Add(item);
+				}
+			}
+			return results;
+		}
+
+		/// <summary>
+		/// Searches the menu for matches
+		/// </summary>
+		/// <param name="terms">The name to search for</param>
+		/// <returns>The results of the search</returns>
+		public static IEnumerable<IOrderItem> Search(string name)
+		{
+			List<IOrderItem> results = new List<IOrderItem>();
+
+			// Null check
+			if (name == null)
+			{
+				return (FullMenu());
+			}
+
+			foreach (IOrderItem item in FullMenu())
+			{
+				// Add the item if the name is a match
+				if (item.ToString() != null && item.ToString().Contains(name))
+				{
+					results.Add(item);
+				}
+			}
+
+			return (results);
 		}
 	}
 }

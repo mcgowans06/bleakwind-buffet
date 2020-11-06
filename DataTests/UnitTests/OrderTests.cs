@@ -2,7 +2,7 @@
  * Author: Samuel McGowan
  * Class: OrderTests.cs
  * Purpose: Test the Order.cs class in the Data library
- * Last Modified: 19/9/20
+ * Last Modified: 11/5/20
  */
 
 using System;
@@ -20,7 +20,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
 {
 	public class OrderTests
 	{
-        [Fact]
+        /*[Fact]
         public void OrderNumberIsIncrementedWhenCreatingNewOrder()
         {
             Order order = new Order();
@@ -29,7 +29,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
             order = new Order();
             x++;
             Assert.Equal(x, order.Number);
-        }
+        }*/
 
         [Fact]
         public void AddingItemNotifiesSubtotalProperty()

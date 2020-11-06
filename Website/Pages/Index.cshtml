@@ -8,6 +8,44 @@
     <div class="text-center">
         <h1 class="display-4">Welcome to the Bleakwind Buffet</h1>
         <p>We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim. Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas. Hack into a Smokehouse Skeleton with your dagger. Or vanquish the the mighty Thalmor Triple Burger! You’ve had a hard adventure and earned your loot, so spend it with us!.</p>
+        <form id="menu-list">
+            <div id="search">
+                <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
+                <input type="submit" value="Search" />
+            </div>
+
+            <div id="filters">
+                <h4>Categories</h4>
+                <label>
+                    <input type="checkbox" name="Category" value="Entree" checked="@Model.Categories.Contains("Entree")" />
+                    Entree
+                </label>
+                <label>
+                    <input type="checkbox" name="Category" value="Side" checked="@Model.Categories.Contains("Side")" />
+                    Side
+                </label>
+                <label>
+                    <input type="checkbox" name="Category" value="Drink" checked="@Model.Categories.Contains("Drink")" />
+                    Drink
+                </label>
+
+                <h4>Price</h4>
+                <div>
+                    Between
+                    <input name="PriceMin" type="number" min="0" max="100" step=".01" placeholder="min" value="@Model.PriceMin"/>
+                    and
+                    <input name="PriceMax" type="number" min="0" max="100" step=".01" placeholder="min" value="@Model.PriceMax"/>
+                </div>
+
+                <h4>Calorie</h4>
+                <div>
+                    Between
+                    <input name="CalorieMin" type="number" min="0" max="1000" step="1" placeholder="min" value="@Model.CalorieMin"/>
+                    and
+                    <input name="CalorieMax" type="number" min="0" max="1000" step="1" placeholder="min" value="@Model.CalorieMax"/>
+                </div>
+            </div>
+        </form>
         <h2>Entrees</h2>
         <div class="menu-item">
             <p style="white-space: pre-line">@Model.DisplayEntrees()</p>
