@@ -45,6 +45,10 @@ namespace BleakwindBuffet.Data.Sides
 			}
 		}
 		/// <summary>
+		/// The description of this side
+		/// </summary>
+		public override string Description { get; } = "Crispy fried potato waffle fries.";
+		/// <summary>
 		/// Calories of this side. Set initially to small
 		/// </summary>
 		public override uint Calories

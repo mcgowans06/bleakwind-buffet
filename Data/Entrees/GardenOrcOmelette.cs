@@ -29,6 +29,10 @@ namespace BleakwindBuffet.Data.Entrees
 				return (ToString());
 			}
 		}
+		/// <summary>
+		/// The description of this entree
+		/// </summary>
+		public override string Description { get; } = "Vegetarian. Two egg omelette packed with a mix of broccoli, mushrooms, and tomatoes. Topped with cheddar cheese.";
 
 		// Default Properties
 		/// <summary>

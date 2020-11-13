@@ -40,6 +40,10 @@ namespace BleakwindBuffet.Data.Sides
 				}
 			}
 		}
+		/// <summary>
+		/// The description of this side
+		/// </summary>
+		public abstract string Description { get; }
 
 		/// <summary>
 		/// The price of the side

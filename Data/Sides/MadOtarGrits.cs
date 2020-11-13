@@ -26,7 +26,10 @@ namespace BleakwindBuffet.Data.Sides
 				return (ToString());
 			}
 		}
-
+		/// <summary>
+		/// The description of this side
+		/// </summary>
+		public override string Description { get; } = "Cheesey Grits.";
 		// Properties
 		/// <summary>
 		/// Price of this side. Set initially to small

@@ -2,7 +2,7 @@
 * Author: Samuel McGowan
 * Class name: IndexModel.cs
 * Purpose: The model for the Index.cshtml website page
-* Last Modified: 11/5/20
+* Last Modified: 11/13/20
 */
 
 using System;
@@ -29,7 +29,7 @@ namespace Website.Pages
 		/// <summary>
 		/// The current filtered menu list
 		/// </summary>
-		private IEnumerable<IOrderItem> MenuList { get; set; }
+		public IEnumerable<IOrderItem> MenuList { get; set; } = Menu.FullMenu();
 
 		public IndexModel(ILogger<IndexModel> logger)
 		{
@@ -74,9 +74,67 @@ namespace Website.Pages
 
 		public void OnGet()
 		{
-			MenuList = Menu.FilterByCategory(Menu.Search(SearchTerms), Categories);
-			MenuList = Menu.FilterByCalories(MenuList, CalorieMin, CalorieMax);
-			MenuList = Menu.FilterByPrice(MenuList, PriceMin, PriceMax);
+			// Filter by search terms
+			if (SearchTerms != null)
+			{		
+				MenuList = Menu.FullMenu().Where(item => (item.ToString() != null && item.ToString().Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase)) || (item.Description != null && item.Description.Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase)));
+				if(MenuList.Count() == 0)
+				{
+					string[] terms = SearchTerms.Split(' ');
+					foreach (string s in terms)
+					{
+						if(MenuList.Count() > 0)
+						{
+							IEnumerable<IOrderItem> newList = Menu.FullMenu().Where(item => (item.ToString() != null && item.ToString().Contains(s, StringComparison.InvariantCultureIgnoreCase)) || (item.Description != null && item.Description.Contains(s, StringComparison.InvariantCultureIgnoreCase)));
+							MenuList = MenuList.Concat(newList);
+						}
+						else
+						{
+							MenuList = Menu.FullMenu().Where(item => (item.ToString() != null && item.ToString().Contains(s, StringComparison.InvariantCultureIgnoreCase)) || (item.Description != null && item.Description.Contains(s, StringComparison.InvariantCultureIgnoreCase)));
+						}
+					}
+				}
+			}
+			// Filter by category
+			if(!(Categories == null || Categories.Count() == 0))
+			{
+				MenuList = MenuList.Where(item => (item is Entree && Categories.Contains("Entree")) || (item is Drink && Categories.Contains("Drink")) || (item is Side && Categories.Contains("Side")));
+			}
+			// Filter by calories
+			if (CalorieMin != null || CalorieMax != null)
+			{
+				if (CalorieMin == null)
+				{
+					MenuList = MenuList.Where(item => item.Calories <= CalorieMax);
+				}
+				else if (CalorieMax == null)
+				{
+					MenuList = MenuList.Where(item => item.Calories >= CalorieMin);
+				}
+				else
+				{
+					MenuList = MenuList.Where(item => item.Calories >= CalorieMin && item.Calories <= CalorieMax);
+				}
+			}
+			// Filter by price
+			if (PriceMin != null || PriceMax != null)
+			{
+				if (PriceMin == null)
+				{
+					MenuList = MenuList.Where(item => item.Price <= PriceMax);
+				}
+				else if (PriceMax == null)
+				{
+					MenuList = MenuList.Where(item => item.Price >= PriceMin);
+				}
+				else
+				{
+					MenuList = MenuList.Where(item => item.Price >= PriceMin && item.Price <= PriceMax);
+				}
+			}
+			//MenuList = Menu.FilterByCategory(Menu.Search(SearchTerms), Categories);
+			//MenuList = Menu.FilterByCalories(MenuList, CalorieMin, CalorieMax);
+			//MenuList = Menu.FilterByPrice(MenuList, PriceMin, PriceMax);
 		}
 
 		/// <summary>
@@ -91,9 +149,10 @@ namespace Website.Pages
 				if(entree is Entree)
 				{
 					// Display Name
-					listOfEntrees += entree.ToString();
-					listOfEntrees += " $" + entree.Price;
+					listOfEntrees += "<b>" + entree.ToString() + "</b>";
+					listOfEntrees += " \n$" + entree.Price;
 					listOfEntrees += " Calories: " + entree.Calories + "\n";
+					listOfEntrees += "<i>" + entree.Description + "</i>\n\n";
 				}
 			}
 			return (listOfEntrees);
@@ -105,18 +164,19 @@ namespace Website.Pages
 		/// <returns>A string with all of the drinks</returns>
 		public string DisplayDrinks()
 		{
-			string listOfEntrees = "";
+			string listOfDrinks = "";
 			foreach (IOrderItem drink in MenuList)
 			{
 				if(drink is Drink)
 				{
 					// Display Name
-					listOfEntrees += drink.ToString();
-					listOfEntrees += " $" + drink.Price;
-					listOfEntrees += " Calories: " + drink.Calories + "\n";
+					listOfDrinks += "<b>" + drink.ToString() + "</b>";
+					listOfDrinks += " \n$" + drink.Price;
+					listOfDrinks += " Calories: " + drink.Calories + "\n";
+					listOfDrinks += "<i>" + drink.Description + "</i>\n\n";
 				}
 			}
-			return (listOfEntrees);
+			return (listOfDrinks);
 		}
 
 		/// <summary>
@@ -125,18 +185,19 @@ namespace Website.Pages
 		/// <returns>A string with all of the sides</returns>
 		public string DisplaySides()
 		{
-			string listOfEntrees = "";
+			string listOfSides = "";
 			foreach (IOrderItem side in MenuList)
 			{
 				if(side is Side)
 				{
 					// Display Name
-					listOfEntrees += side.ToString();
-					listOfEntrees += " $" + side.Price;
-					listOfEntrees += " Calories: " + side.Calories + "\n";
+					listOfSides += "<b>" + side.ToString() + "</b>";
+					listOfSides += " \n$" + side.Price;
+					listOfSides += " Calories: " + side.Calories + "\n";
+					listOfSides += "<i>" + side.Description + "</i>\n\n";
 				}
 			}
-			return (listOfEntrees);
+			return (listOfSides);
 		}
 	}
 }

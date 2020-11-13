@@ -126,6 +126,11 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 		}
 
+		/// <summary>
+		/// The description of this drink
+		/// </summary>
+		public override string Description { get; } = "Hormone-free organic 2% milk.";
+
 		// ToString Override
 		/// <summary>
 		/// Returns a description of this drink

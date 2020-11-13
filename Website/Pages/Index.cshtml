@@ -46,17 +46,19 @@
                 </div>
             </div>
         </form>
-        <h2>Entrees</h2>
-        <div class="menu-item">
-            <p style="white-space: pre-line">@Model.DisplayEntrees()</p>
-        </div>
-        <h2>Sides</h2>
-        <div class="menu-item">
-            <p style="white-space: pre-line">@Model.DisplaySides()</p>
-        </div>
-        <h2>Drinks</h2>
-        <div class="menu-item">
-            <p style="white-space: pre-line">@Model.DisplayDrinks()</p>
+        <div class="flex-columns">
+            <div class="menu-item">
+                <h2>Entrees</h2>
+                <p style="white-space: pre-line">@Html.Raw(Model.DisplayEntrees())</p>
+            </div>
+            <div class="menu-item">
+                <h2>Sides</h2>
+                <p style="white-space: pre-line">@Html.Raw(Model.DisplaySides())</p>
+            </div>
+            <div class="menu-item">
+                <h2>Drinks</h2>
+                <p style="white-space: pre-line">@Html.Raw(Model.DisplayDrinks())</p>
+            </div>
         </div>
         <h2>Combos</h2>
         <p>Any entree, side, and drink can be combined into a Combo with a $1 discount.</p>

@@ -29,7 +29,10 @@ namespace BleakwindBuffet.Data.Entrees
 				return (ToString());
 			}
 		}
-
+		/// <summary>
+		/// The description of this entree
+		/// </summary>
+		public override string Description { get; } = "Cheesesteak sandwich made from grilled sirloin, topped with onions on a fried roll.";
 		// Default Properties
 		/// <summary>
 		/// Price of this entree

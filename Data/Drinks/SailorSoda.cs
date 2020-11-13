@@ -90,7 +90,12 @@ namespace BleakwindBuffet.Data.Drinks
 					PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
 				}
 			}
-		} 
+		}
+
+		/// <summary>
+		/// The description of this drink
+		/// </summary>
+		public override string Description { get; } = "An old-fashioned jerked soda, carbonated water and flavored syrup poured over a bed of crushed ice.";
 
 		// Private Backing Variables
 		private Boolean _ice = true;

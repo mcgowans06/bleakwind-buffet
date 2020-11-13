@@ -45,7 +45,10 @@ namespace BleakwindBuffet.Data.Entrees
 		/// Empty list that stores the special instructions
 		/// </summary>
 		public override List<string> SpecialInstructions { get;} = new List<string>();
-
+		/// <summary>
+		/// The description of this entree
+		/// </summary>
+		public override string Description { get; } = "Juicy T-Bone, not much else to say.";
 		// ToString Override
 		/// <summary>
 		/// Returns a description of this entree

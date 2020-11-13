@@ -49,6 +49,10 @@ namespace BleakwindBuffet.Data.Drinks
 			}
 		}
 		/// <summary>
+		/// The description of this drink
+		/// </summary>
+		public override string Description { get; } = "Fair trade, fresh ground dark roast coffee.";
+		/// <summary>
 		/// The calories of this drink, set to the value of a small by default
 		/// </summary>
 		public override uint Calories

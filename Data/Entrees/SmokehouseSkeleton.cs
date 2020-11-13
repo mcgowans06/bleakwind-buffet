@@ -29,7 +29,10 @@ namespace BleakwindBuffet.Data.Entrees
 				return (ToString());
 			}
 		}
-
+		/// <summary>
+		/// The description of this entree
+		/// </summary>
+		public override string Description { get; } = "Put some meat on those bones with a small stack of pancakes. Includes sausage links, eggs, and hash browns on the side. Topped with the syrup of your choice.";
 		// Default Properties
 		/// <summary>
 		/// Price of this entree

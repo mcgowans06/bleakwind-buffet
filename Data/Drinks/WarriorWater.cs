@@ -48,7 +48,10 @@ namespace BleakwindBuffet.Data.Drinks
 		{
 			get => new List<string>(specialInstructions);
 		}
-
+		/// <summary>
+		/// The description of this drink
+		/// </summary>
+		public override string Description { get; } = "It’s water. Just water.";
 		// Private Backing Variables
 		private Boolean _ice = true;
 		private Boolean _lemon = false;

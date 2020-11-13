@@ -41,6 +41,11 @@ namespace BleakwindBuffet.Data.Drinks
 		}
 
 		/// <summary>
+		/// The description of this item
+		/// </summary>
+		public abstract string Description { get; }
+
+		/// <summary>
 		/// The price of the drink
 		/// </summary>
 		/// <value>

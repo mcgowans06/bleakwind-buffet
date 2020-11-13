@@ -2,6 +2,7 @@
 * Author: Samuel McGowan
 * Class name: IOrderItem.cs
 * Purpose: To hold information for the base interface IOrderItem
+* Last Modified: 11/12/20
 */
 
 using System;
@@ -30,5 +31,10 @@ namespace BleakwindBuffet.Data
 		/// The special instructions to prepare the item
 		/// </summary>
 		List<string> SpecialInstructions { get; }
+
+		/// <summary>
+		/// The description of the item
+		/// </summary>
+		string Description { get; }
 	}
 }

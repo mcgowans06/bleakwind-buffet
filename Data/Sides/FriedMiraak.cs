@@ -27,6 +27,10 @@ namespace BleakwindBuffet.Data.Sides
 				return (ToString());
 			}
 		}
+		/// <summary>
+		/// The description of this side
+		/// </summary>
+		public override string Description { get; } = "Perfectly prepared hash brown pancakes.";
 
 		// Properties
 		/// <summary>
